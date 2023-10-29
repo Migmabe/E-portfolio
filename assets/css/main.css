@@ -162,10 +162,6 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	p {
-		margin: 0 0 2em 0;
-	}
-
 	h1 {
 		font-size: 2.75em;
 		font-weight: 700;
@@ -1856,8 +1852,8 @@ input, select, textarea {
 			}
 
 			.icon.style2:hover {
-				color: #f2849e;
-				border-color: #f2849e;
+				color: #84aef2;
+				border-color: #84aef2;
 			}
 
 			.icon.style2:active {
@@ -2537,7 +2533,7 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #f2849e;
+				background-color: #84aef2;
 			}
 
 			input[type="submit"].primary:active,
@@ -2545,7 +2541,7 @@ input, select, textarea {
 			input[type="button"].primary:active,
 			button.primary:active,
 			.button.primary:active {
-				background-color: #ee5f81;
+				background-color: #84aef2;
 			}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
