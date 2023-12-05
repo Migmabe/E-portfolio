@@ -1,0 +1,7 @@
+.image1 {
+    /*This one is for the blue circular picture*/
+    background-image: url('images/CV_1.png');
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+}
