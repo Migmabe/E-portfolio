@@ -94,6 +94,36 @@
 							</section>
 							<hr />
 							<section>
+								<h2>Analysis of gathered data from the module</h2>
+								<p>To go through the module content I made my notes based off Codio, lecturecasts and online research. I also did a lot of practical testing by trying scripts back and forth, this helped me understand concepts where only theory is not efficient.</p>
+								<br>
+								<p>The module outcomes, in my view, were achieved as I studied and produced UML graphs to support Object Oriented software development. I explored sets, lists and dictionaries as main data structures.</p>
+								<br>
+								<p>On another note, I also collaborated on the module discussion space, where a few classmates and I discussed on the priorities of software development (Padhy, Satapathy and Singh, 2017, pp.431–440): 
+									<ol>
+										<li>Service contracts</li>
+										<li>Used in the data project</li>
+										<li>Architecture driven program</li>
+										<li>Documentation in project</li>
+										<li>Modules in the program</li>
+										<li>An algorithm used in the program</li>
+										<li>Design patterns</li>
+										<li>Knowledge requirement</li>
+										<li>Models in the project</li>
+										<li>Requirement analysis</li>
+										<li>Test cases</li>
+									</ol>
+									After discussing with my classmates, I drew conclusions and changed it so that the “Requirement Analysis” and the “Knowledge Requirement” rank higher. 
+								</p>
+								<table class="table-custom">
+									<tr>
+										<td style="width: 25%;"></td>
+										<td style="width: 75%;">Padhy, N., Satapathy, S. and Singh, R. (2017). State-of-the-Art Object-Oriented Metrics and Its Reusability: A Decade Review. [online] Springer Singapore Pte. Limited, pp.431–440. Available at: <a href="https://ebookcentral.proquest.com/lib/universityofessex-ebooks/reader.action?docID=5217051&ppg=405">LINK</a> [Accessed 17 Nov. 2023].</td>
+									</tr>
+								</table>
+							</section>
+							<hr>
+							<section>
 								<h2>Skills matrix</h2>
 								<table>
 									<thead>
@@ -112,7 +142,6 @@
 													<li>Teamwork and resilience</li>
 													<li>Communication</li>
 													<li>Informed decision making</li>
-													<li>Documentation to aid communication (e.g graphs)</li>
 												</ul>
 											</td>
 											<td>
@@ -120,7 +149,7 @@
 												<ul>
 													<li>Prioritizing tasks</li>
 													<li>Work constructively with different viewpoints</li>
-													<li>Python, MySQL, JavaScript skills</li>
+													<li>Python</li>
 												</ul>
 											</td>
 										</tr>
@@ -151,28 +180,73 @@
 							<hr />
 							<section>
 								<h2>Action plan</h2>
-								<p>Need some guidance to come up with the action plan.</p>
+								<img style="max-width: 100%;" src="images/action plan.png" alt="Action plan">
 							</section>
 							<hr />
 							<section>
 								<h2>Reflective piece</h2>
 								<blockquote>
-									<p>Postgraduate education is a major step forward in a person’s professional development. Adapting to a new way of understanding and critical thinking is not an easy step. Launching to Computer Science adds another level of complexity, with a topic I had never touched. </p>
+									<p>I have learned the idea around the Object Oriented Programming (OOP) Technique, widely used in industry nowadays (U. et al., 2015 and S. RAUT, 2020). OOP is a powerful technique, as it mainly relies on reusable frames and structures, similar to having blueprints to create slightly modified versions of themselves. This is very efficient in terms of reusability and efficiency when tackling a similar problem, as OOP methods can be easily passed other system’s inputs. For instance, the Driverless Car Assignment considers modules like battery and on-board computer. In fact, these modules also appear on an autonomous drone system. However, you would not initialize the battery with the car capacity, but with a smaller capacity, drone capacity. Same concept applies on the on-board computer, as the drone’s computer might have a different serial number, software, … but it essentially tracks and processes the same data: speed, destination…</p>
 									<br />
 									<p>
-										I took on this challenge as part of a redefined professional journey. My goal is to get into the Aerial Robotics industry, intersecting computer science with mechanical and aeronautics knowledge to hopefully develop autonomous aero systems. 
-										In previous experience, I had learned that I lack on study planning, tangling up on topics that were sometimes out of scope. With this part time module, I have improved on this aspect and performed to a great standard while working part time in a demanding environment. This was partially achieved thanks to following strict deadlines and being extremely consistent. Moreover, the course structure helped in this regard. 
-										During this 12-week module I have not only improved my soft and management skills, but also acquired relevant knowledge in Python, MySQL, HTML, CSS and working with GitHub workflows. These were put into practice with 4 assignments. 
+										A few issues were encountered when coding the system, as I started developing it in defined modules: 
+										<ul>
+											<li>main.py: kept it, as it creates the car object and processes the input data</li>
+											<li>onboard.py</li>
+											<li>processing.py</li>
+											<li>hardware.py</li>
+										</ul>
+									</p>
+									<p>These were involved in a cyclic update issue, as processing imported the hardware and onboard module. At the same time, hardware was importing the onboard module, to pass values like braking for example. This did not work very well, as I was passing the braking attributes during initialization of the hardware module, rather inefficiently. A solution that I would have liked to implement was to pass the values directly creating a hardware object separately and passing the attributes on the onboard computer class itself, with an updater function.  
 									</p>
 									<br />
-									<p>
-										Panadero, Jonsson and Botella (2017) proved that student self-assessment and self-guided learning improves their efficiency studying. Postgraduate studies require a lot of self-guidance. Everything depends on what you achieve, who you reach and how you plan. We are our harshest judges and several areas are to be significantly improved. These are algorithm understanding and testing. 
+									<p>I learned that modelling an OOP system is one side of the task, but then data transfer across objects or even Python modules is a whole other thing. When working with a superclass and its subclasses, I needed the hardware to feed data to the main computer. When modelling the “Driverless Car”, I learned that input output data relations between objects can be done by initializing the object as a parent attribute. That way, you ensure the number of objects correctly map the real life scenario. For instance, if you only have 1 hardware unit, why recreate the motors, wheels and brakes? In real life these are the same components/modules during the vehicle’s operation, they do not change throughout.
+
+										This is how I learned to initialize objects as attributes (not exactly as included in the submitted script): 
 									</p>
-									<br />
+									<pre style="width: 50%;">
+										<p>Done on processUnit class:</p>
+										<code>def __init__(self, imu_object):
+super().__init__()
+self.error_list = []
+self.error_count = 0
+self.imu = imu_object
+									</code>
+									</pre>
+									<pre style="width: 50%;">
+										<p>Done on HardwareControl class:</p>
+										<code>class HardwareControl(ProcessUnit):
+
+def __init__(self, process_unit):
+self.process_unit = process_unit
+self.hardware = ElectricalMotor(self.process_unit.speed, self.process_unit.brake)
+self.errors = self.hardware.errors
+
+</code>
+									</pre>
+									<p>Every time the code referred to HardwareControl (was only once, but efficiency can get much worse if happened more times), a new instance of electrical motor was initialized overriding the previously generated attributes. </p>
+									<br>
+									<p>During the length of this module, I have experienced technical and non-technical issues. Abbasi et al., (2021) clearly defines in a real-life study, the main problems that students encounter in the OOP learning process. These closely relate to my issues, as lack of understanding made grasping of the concepts slow and tedious. On the non-technical side of things, planning and strategy when embarking on this journey are key to developing a high-end piece of software. Also, I learned that time management is extremely important now that software development gets more complex and used GitHub’s branches to implement changes to the main program.</p>
+									<br>
+									<p>All in all, this module gave me a comprehensive view on this revolutionary way of programming, which also influenced my way of approaching problems in other fields like 3D modelling. Now I turn out to “divide” the system to be modelled into tangible objects that work together.</p>
+									<br>
+									<p>I have defined the main scripts I used as exercises to better understand the topic under the “Carried out work” section.</p>
 									<table class="table-custom">
 										<tr>
 											<td style="width: 25%;"></td>
-											<td style="width: 75%;">Panadero, E., Jonsson, A. and Botella, J. (2017). Effects of self-assessment on self-regulated learning and self- efficacy: Four meta-analyses. [online] Available at: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1747938X17300313?fr=RR-2&ref=pdf_download&rr=81cd0da96d00046a ">LINK</a> [Accessed 27 Oct. 2023].</td>
+											<td style="width: 75%;">U., O.F., U., O.P., E., M.C. and G., J. (2015). Impacts of Object Oriented Programming on Web Application Development. International Journal of Computer Applications Technology and Research, 4(9), pp.706–710. doi:.<a href="https://doi.org/10.7753/ijcatr0409.1011">LINK</a> [Accessed 12 Feb. 2024].</td>
+										</tr>
+										<tr>
+											<td style="width: 25%;"></td>
+											<td style="width: 75%;">S. RAUT, R. (2020). Research Paper on Object-Oriented Programming (OOP). [online] Badnera, Maharashtra, India: International Research Journal of Engineering and Technology (IRJET). Available at: <a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10247.pdf">LINK</a> [Accessed 14 Feb. 2024].</td>
+										</tr>
+										<tr>
+											<td style="width: 25%;"></td>
+											<td style="width: 75%;">S. RAUT, R. (2020). Research Paper on Object-Oriented Programming (OOP). [online] Badnera, Maharashtra, India: International Research Journal of Engineering and Technology (IRJET). Available at: <a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10247.pdf">LINK</a> [Accessed 14 Feb. 2024].</td>
+										</tr>
+										<tr>
+											<td style="width: 25%;"></td>
+											<td style="width: 75%;">Abbasi, S., Kazi, H., Kazi, A.W., Khowaja, K. and Baloch, A. (2021). Gauge Object Oriented Programming in Student’s Learning Performance, Normalized Learning Gains and Perceived Motivation with Serious Games. Information, 12(3), p.101. doi:<a href="https://doi.org/10.3390/info12030101.">LINK</a> [Accessed 14 Feb. 2024].</td>
 										</tr>
 									</table>
 								</blockquote>
@@ -216,6 +290,7 @@
 									</table>
 								</div>
 							</section>
+							<hr>
 							<section>
 								<h2>Carried out work</h2>
 								<h4>Holiday booking script</h4>
@@ -628,6 +703,42 @@ from module1 import *
 obj = Employee("Miguel", "Engineer")
 
 greeting()</code>
+								</pre>
+								<h4>Import CSV data</h4>
+								<p>This is not exactly linked to OOP, however it allowed me to efficiently enter and modify data using an excel sheet, to later feed to the "Autonomous Car" systems.</p>
+								<br>
+								<h6 style="text-transform: lowercase; text-decoration: underline;">main.py</h6>
+								<pre>
+									<code>from csv import reader
+from app import App
+
+
+apps = []
+
+with open("apps.csv") as csv_file:
+    csv_reader = reader(csv_file, delimiter=",")
+    next(csv_reader)
+    for name, description, category in csv_reader:
+        apps.append(App(name, description, category))
+
+for app in apps:
+    if "social" in app.category:
+        app.display()
+									</code>
+								</pre>
+								<h6 style="text-transform: lowercase; text-decoration: underline;">app.py</h6>
+								<pre>
+									<code># define the App class
+
+class App:
+    def __init__(self, name, description, category):
+        self.name = name
+        self.description = description
+        self.category = category
+
+    def display(self):
+        print(f'{self.name} is a(n) {self.category} app that is {self.description}.')
+									</code>
 								</pre>
 							</section>							
                         </div>
