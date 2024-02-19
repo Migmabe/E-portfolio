@@ -197,29 +197,438 @@
 											</tr>
 											<tr>
 												<td>Assignment 1: Part 2</td>
-												<td>System Implementation<p><a href="downloadables/2.zip" class="button primary icon solid fa-download" download="Assignment 1: Part 2">DOWNLOAD</a></p></td>
-												<td>82 (Distinction)</td>
+												<td>System Implementation<p><a href="downloadables/OOP_car" class="button primary icon solid fa-download" download="Assignment 1: Part 2">DOWNLOAD</a></p></td>
+												<td>NA</td>
 											</tr>
 											<tr>
-												<td>Assignment 1: Part 3</td>
-												<td> MySQL database: Data filtering and extraction<p><a href="downloadables/3.zip" class="button primary icon solid fa-download" download="Assignment 1: Part 3">DOWNLOAD</a></p></td>
-												<td>87 (Distinction)</td>
-											</tr>
-											<tr>
-												<td>End of Module Assignment</td>
-												<td>Research: Aerial Intelligence in Agriculture<p><a href="downloadables/End of Module Assignment.pdf" class="button primary icon solid fa-download" download="End of Module Assignment">DOWNLOAD</a></p></td>
-												<td>71 (Distinction)</td>
+												<td>Assignment 2</td>
+												<td> E-Portfolio Submission<p><a href="downloadables/3.zip" class="button primary icon solid fa-download" download="Assignment 1: Part 3">DOWNLOAD</a></p></td>
+												<td>NA</td>
 											</tr>
 										</tbody>
 										<tfoot>
 											<td colspan="2"></td>
 											<td>
 												<p style="font-weight: 900;">Overall</p>
-												<p>75 (Distinction)</p>
+												<p>NA</p>
 											</td>
 										</tfoot>
 									</table>
 								</div>
+							</section>
+							<section>
+								<h2>Carried out work</h2>
+								<h4>Holiday booking script</h4>
+								<p>Using OOP, the employee class retains employee data and allows the user to book holiday. Learned:
+								<ul>
+									<br>
+									<li>Attribute initialisation using the init method</li>
+									<li>Methods that depend upon other methods</li>
+								</ul>
+								</p>
+								<pre>
+									<code>
+# App to retain employee details and select a day of annual leave
+
+import datetime
+
+
+class Employee:
+    """Name | Surname | Employee No | Age | Annual Leave Day"""
+
+    def __init__(self, name, last_name, empno, age):
+        self._name = name
+        self._surname = last_name
+        self._empno = empno
+        self.age = age
+        self.day = None
+
+    def leave(self):
+
+        """Check if there's leave time booked. If so, run change_leave function"""
+
+        if self.day is None:
+
+            date = input(f"Please {self._name} enter a date (DD-MM-YYYY) to go on leave: \n")
+
+            try:
+
+                self.day = datetime.datetime.strptime(date, "%d-%m-%Y")
+
+            except ValueError:
+
+                print("Invalid date format. Please use DD-MM-YYYY format.")
+
+        else:
+
+            Employee.change_leave(self)
+
+    def change_leave(self):
+
+        """Check if there's leave time booked. if not, run leave function"""
+
+        if self.day is not None:
+
+            answer = input("You already booked leave time. Would you like to change it? Yes or No")
+
+            if answer.lower() == "yes":
+
+                date = input(f"Please {self._name} enter a date (DD-MM-YYYY) to go on leave: \n")
+
+                self.day = datetime.datetime.strptime(date, "%d-%m-%Y")
+
+                print("Leave time successfully booked")
+
+            else:
+
+                print("Thanks and goodbye")
+
+        else:
+
+            Employee.leave(self)
+
+
+if __name__ == "__main__":
+    Miguel = Employee("Miguel", "Maide Bezares", 316061, 22)
+    Nicole = Employee("Nicole", "Perez Guerrero", 0o36170, 23)
+
+    Miguel.leave()
+    Nicole.change_leave()
+    Nicole.change_leave()
+									</code>
+								</pre>
+								<h4>Rectangle point</h4>
+								<p>Used a class to build another class. Learned:
+									<ul>
+										<br>
+										<li>Composition principle "has-a". Where a rectangle has a point (at least).</li>
+										<li>Object initialisation as another class attribute</li>
+									</ul>
+								</p>
+								<pre>
+									<code>class Point:
+    def __init__(self, x=0.0, y=0.0):
+        self.x = x
+        self.y = y
+class Rectangle:
+    def __init__(self):
+        self.width = 0.0
+        self.height = 0.0
+        self.corner = Point() 
+
+rectangle1 = Rectangle()
+rectangle1.corner.x = 0.3
+rectangle1.corner.y = 3
+									</code>
+								</pre>
+								<p>Here's a real application, with a program that checks if a rectangle is contained within a specified circle:</p>
+								<pre>
+									<code>import math
+class Point:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+
+class Rectangle:
+
+    def __init__(self):
+        self.width = 0
+        self.height = 0
+        self.center = Point()
+
+
+class Circle:
+
+    def __init__(self):
+        self.radius = 0
+        self.center = Point()
+
+
+def point_in_circle(object1, object2):
+    """Object1 Circle || Object2 Point"""
+
+    distance = math.sqrt((object1.center.x - object2.x) ** 2 + (object1.center.y - object2.y) ** 2)
+
+    if distance <= object1.radius:
+        return True
+    else:
+        return False
+
+
+def rect_in_circle(object1, object2):
+    """Object1 Circle || Object2 Rectangle"""
+
+    point2 = Point(object2.center.x + object2.width, object2.center.y)
+    point3 = Point(object2.center.x, object2.center.y + object2.width)
+    point4 = Point(object2.center.x + object2.width, object2.center.y + object2.width)
+
+    points = [object2.center, point2, point3, point4]
+
+    for n in points:
+        if not point_in_circle(object1, n):
+            return False
+    return True
+
+
+def rect_circle_overlap(object1, object2):
+    """Object1 Circle || Object2 Rectangle"""
+
+    point2 = Point(object2.center.x + object2.width, object2.center.y)
+    point3 = Point(object2.center.x, object2.center.y + object2.width)
+    point4 = Point(object2.center.x + object2.width, object2.center.y + object2.width)
+
+    points = [object2.center, point2, point3, point4]
+
+    for n in points:
+        if point_in_circle(object1, n):
+            return True
+    return False
+
+
+def main():
+    box = Rectangle()
+    box.width = 100.0
+    box.height = 200.0
+    box.corner = Point()
+    box.corner.x = 50.0
+    box.corner.y = 50.0
+
+    circle = Circle()
+    circle.center = Point()
+    circle.center.x = 150.0
+    circle.center.y = 100.0
+    circle.radius = 75.0
+
+    print(point_in_circle(circle, box.center))
+    print(rect_in_circle(circle, box))
+    print(rect_circle_overlap(circle, box))
+
+
+if __name__ == '__main__':
+    main()
+
+									</code>
+								</pre>
+								<h4>Object counter</h4>
+								<p>Class that keeps track of how many girl objects were created. Learned:
+									<ul>
+										<br>
+										<li>Global class attributes, used indistinctively by any of the class methods</li>
+										<li>@classmethod, that works with class attributes as if they were objects</li>
+									</ul>
+								</p>
+								<pre>
+									<code>class Girl:
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Girl.count += 1
+
+    @classmethod
+    def count1(cls):
+        return cls.count
+
+
+r = Girl("nicole")
+s = Girl("pedro")
+
+print(Girl.count1()) #yields 2
+									</code>
+								</pre>
+								<h4>Methods</h4>
+								<p>Explored other class functionalities in depth. Learned:</p>
+								<ul>
+									<br>
+									<li>Class methods, like object addition, substraction, multiplication, division, power, negation and comparison methods</li>
+									<li>Debugging and object printing methods, the __repr__ and __str__ methods respectively</li>
+								</ul>
+								<p>This script is a general example of one of the methods, as these are called when their respective operations +, -, /, *, **, print, repr, >, <... appear on the code.</p>
+								<pre>
+									<code>class Point:
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __mul__(self, other):
+        new_x = self.x * other.x
+        new_y = self.y * other.y
+        return Point(new_x, new_y)
+
+
+p1 = Point(2, -3)
+p2 = Point(1, 5)
+
+result = p1 * p2  # generates a new point called result
+
+print(result.x, result.y)
+									</code>
+								</pre>
+								<h4>Animal polymorphism</h4>
+								<p>There are many animals. Many of them make sounds, but not all the same sound. Learned:</p>
+								<ul>
+									<li>Dynamic polymorphism, as depdending on the type of object passed, a different instance of the same method will be called</li>
+									<li>If several equal methods for different input conditions are called the same, the last one defined prevails</li>
+									<li>Basic overloading</li>
+								</ul>
+								<pre>
+									<code>class Animal:
+    def make_sound(self):
+        return "Some generic sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+# Function demonstrating dynamic polymorphism
+def animal_sound(animal):
+    return animal.make_sound()
+
+my_animals = [Dog(), Cat()]
+
+for animal in my_animals:
+    print(animal_sound(animal))  # The decision is made at runtime
+									</code>
+								</pre>
+								<h4>Vehicle interface</h4>
+								<p>Use of superclasses that are not directly called or instanced, but provide a clear structure of the methods and attributes to be included on its subclasses. Learned:</p>
+								<ul>
+									<br>
+									<li>Superclasses, subclasses and basic interface relations</li>
+									<li>Simple @abstractmethod decorator applications to force error raise if interface not followed</li>
+								</ul>
+								<p>The Car subclass is not considering the stop method defined in the abstract class, therefore it will throw an error. Note the abc import, really handy (not compulsory) to structure abstract classes. The abc module defines the interface to which adopt our code. This ABC is used to define a class as abstract and @abstractmethod is a decorator. 
+									Note how the abstract methods START and STOP are overridden in the subclass:
+								</p>
+								<pre>
+									<code>from abc import ABC, abstractmethod
+
+# Abstract class
+class Vehicle(ABC):
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    @abstractmethod
+    def start(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+# Subclasses inheriting from the abstract class
+class Car(Vehicle):
+    def start(self):
+        return f"Starting the {self.make} {self.model} car"
+    
+class Motorcycle(Vehicle):
+    def start(self):
+        return f"Starting the {self.make} {self.model} motorcycle"
+
+    def stop(self):
+        return f"Stopping the {self.make} {self.model} motorcycle"
+
+# Creating instances of the subclasses
+my_car = Car("Toyota", "Corolla")
+my_motorcycle = Motorcycle("Honda", "CBR")
+									</code>
+								</pre>
+								<h4>Person details</h4>
+								<p>A person's name is a constant value, unchangeable from the moment it is initialized. However, a person's age does change. Learned:</p>
+								<ul>
+									<br>
+									<li>@getter and @setter methods</li>
+									<li>Manual getter and setter type of functions (def get_type(self) and def set_type(self) respectively)</li>
+									<li>Privacy Python convention, and strictly private convention for attributes not to be accessed or modified</li>
+								</ul>
+								<pre>
+									<code>class Person:
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def age(self):
+        return self._age
+
+    @age.setter
+    def age(self, new_age):
+        if self._age > 20:
+            raise ValueError("Age must be less than 20")
+        self._age = new_age
+
+
+c = Person("Calvin",23)
+print(c.name)
+print(c.age)
+c.age = 56
+print(c.age)
+									</code>
+								</pre>
+								<h4>Import modules</h4>
+								<p>To work in different Python files and combine them by importing them in a more organised fashion. Learned:</p>
+								<ul>
+									<br>
+									<li>Cyclic import issues</li>
+									<li>4 ways to work with imports. These can be entire py files, objects or even methods</li>
+								</ul>
+								<p>These are the 4 variations:</p>
+								<pre>
+									<code>#################module1.py#####################
+
+class Employee:
+    def __init__(self, name, title):
+        self.name = name
+        self.title = title
+
+    def display(self):
+        print(f'Employee: {self.name}')
+        print(f'Title: {self.title}')
+
+
+def greeting():
+    print("Hi from module1.py!")
+
+##############1st method#####################
+
+import module1
+
+obj = module1.Employee("Miguel", "Engineer")
+
+##############2nd method########################
+
+from module1 import Employee
+
+obj = Employee("Miguel", "Engineer")
+
+##############3rd method#######################
+
+from module1 import Employee, greeting
+
+obj = Employee("Miguel", "Engineer")
+
+greeting()
+
+###############4th method#######################
+
+from module1 import *
+
+obj = Employee("Miguel", "Engineer")
+
+greeting()</code>
+								</pre>
 							</section>							
                         </div>
 					</div>
