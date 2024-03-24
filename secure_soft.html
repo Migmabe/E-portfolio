@@ -40,6 +40,10 @@
 			background-size: cover;
 			}
 
+			.blog td p{
+				margin-bottom: 1%;
+			}
+
 		</style>
 		<style type="text/css">
 			html { font-family:Calibri, Arial, Helvetica, sans-serif; font-size:11pt; background-color:white }
@@ -468,8 +472,85 @@
 								</blockquote>
 							</section>
 							<hr />
+							<section style="width: 100%">
+								<h2>Collaborative discussions</h2>
+								<table>
+									<tr style="border: 1px solid black;">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 1 – Broken access control</h4>
+											<p style="font-size: small;">by Miguel Maide Bezares</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Broken access is a vulnerability that occurs when an application or system can be subject to attacks that bypass legitimate authorisations and perform unauthorised tasks. This is the first ranked risk in the OWASP “Top Ten Application Security Risks” (OWASP, 2021) and also identified by The MITRE Corporation (2023),  as one of the “2023 CWE Top 25 Most Dangerous Software Weaknesses”. They break it down to: Improper Authentication, Improper Limitation of a Pathname to a restricted Directory and Improper Privilege Management. 
+												Not taking careful consideration to these aspects when designing an application or software, may lead to data breaches, identity theft, financial losses and impact organization reputation. One of the biggest examples of this technique being used fraudulently takes us back to the Equifax breach in 2017, with more than $400 million lost and 147 million affected people. Equifax did not properly segment and maintain their systems, and hackers entered their system through a complaint web portal. 
+												Saltzer and Schroeder (1975) define the concept “work factor”, which states that the amount of effort required to defeat a security mechanism should be proportional to the value of the information being protected.
+												Here is a proposed UML flowchart that represents exposure of our system to broken access control and some modifications to enforce legitimate access to data. Some of the changes are directly done on the API itself with secure HTML fetching HTTPS protocol and the server using SSL/TLS encryption. Then login attempts are counted (max 5), multi-factor authentication (MFA) implemented and the application keeps track of the user details to avoid personification after the MFA has passed.</p>
+											<img style="width:100%;" src="images/UML_discussion1.png" alt="">
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p style="margin-bottom: 1%;">Saltzer, J.H. and Schroeder, M.D. (1975). The protection of information in computer systems. Proceedings of the IEEE, 63(9), pp.1278–1308. doi:https://doi.org/10.1109/proc.1975.9939.</p>
+											<p style="margin-bottom: 1%;">‌OWASP (2021). OWASP Top Ten. [online] Owasp.org. Available at: https://owasp.org/www-project-top-ten/.</p>
+											<p style="margin-bottom: 1%;">The MITRE Corporation (2023). CWE - 2023 CWE Top 25 Most Dangerous Software Weaknesses. [online] Available at: https://cwe.mitre.org/top25/archive/2023/2023_top25_list.html.</p>	
+											<h4 style="text-decoration: underline; margin-top: 2%;">Bibliography</h4>
+											<p style="margin-bottom: 1%;">Apidog Blog. (2023). API Protocol Types | The 8 Most Commonly Used API Protocols. [online] Available at: https://apidog.com/blog/8-api-protocol-types/.</p>
+											<p style="margin-bottom: 1%;">‌Fruhlinger, J. (2020). Equifax data breach FAQ: What happened, who was affected, what was the impact? [online] CSO Online. Available at: https://www.csoonline.com/article/567833/equifax-data-breach-faq-what-happened-who-was-affected-what-was-the-impact.html#:~:text=No%20network%20is%20invulnerable.</p>
+										</td>
+									</tr>
+								</table>
+								<table style="width: 90%; margin-left: 10%;">
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<p style="font-size: small;">by Mario</p>
+											<p>Hi Miguel,</p>
+											<p>Thank you for sharing your knowledge on the subject of broken access control.</p>
+											<p>The explanation of the vulnerability is both clear and concise, and the flowcharts are easy to follow. I particularly like how you broke the process of data access into two flowcharts – one showing steps to compromise the data and the other one showing the OWASP recommendations about protecting the data from being compromised using MFA and failed attempts alerts.</p>
+											<p>The mitigation against impersonation is enforced by MFA, however, there are several ways to compromise MFA, such as session hijacking or endpoint attacks (Grimes, 2021).
+												I would kindly suggest a slight change to the flowchart showing the MFA enforcement. An additional decision box could be introduced, following the successful “User details correlate?” box that enforces further checks as to whether the user has privileges to access the requested data.</p>
+											<p>Best regards,</p>
+											<p>Mario</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p>Grimes, R.A. (2021). Hacking multifactor authentication. [online] Indianapolis, In: John Wiley & Sons, Inc. Available at: https://learning.oreilly.com/library/view/hacking-multifactor-authentication/9781119650799/ [Accessed 23 Mar. 2024].</p>
+										</td>
+									</tr>
+								</table>
+								<table style="width: 90%; margin-left: 10%;">
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<p style="font-size: small;">by Samuel</p>
+											<p>Hi Miguel,</p>
+											<p>Thank you for providing your thoughts on what broken access control is and how to prevent it. I found it to be rather informative.</p>
+											<p>I liked how you used the Equifax breach in 2017 as a case study as it showed the aftereffects of an attack from the perspective of a company and its customers. Thinking about the knock-on effects of an attack and showing different perspectives shows a good level of knowledge about broken access controls.</p>
+											<p>You have clearly done a lot of research into broken access controls showing how different techniques can be combined to fix any access control issues.</p>
+											<p>Your use of swimlanes in your UML diagram made it clear what aspect of the system manages each part of the process. I liked how you used separate diagrams to demonstrate what broken access controls are and how to prevent broken access controls.</p>
+											<p>Regarding your flowchart an oval should be used to represent the start and end process (Oblikwu. et al., 2019), you have used the state diagram start and stop notation. Additionally, could you have used separate headers or annotations to distinguish the flow charts to make it clearer which diagram is which.
+											</p>
+											<p>Have you thought about how access control policies can be used in the cloud to enforce role-based access control? For example, AWS uses IAM Roles to manage access based on roles. (Amazon, N.D)
+											</p>
+											<p>Have you considered how following the Principle of Least Privilege to limit the access of users can reduce the impact a hacker can have after exploiting broken access controls? (Maric, 2023)</p>
+											<p>Regarding you references I noticed you aren't showing the access date that is shown in the UoEO Harvard referencing guide. I would suggest to have a look at the Harvard referencing guide which can be found in the Plagiarism and Referencing section on the Study Skills Hub. I have attached the University of Essex Harvard Referencing Guide that shows examples of how to reference sources.
+											</p>
+											<p>Best regards,</p>
+											<p>Sam</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p>Amazon. (N.D.) AWS Identity and Access Management. Available from: https://aws.amazon.com/iam/ [Accessed 24 March 2024]</p>
+											<p>Maric, N. (2023) Broken Access Control: Attack Examples and 4 Defensive Measures. December 29, 2023. Available from https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/#:~:text=Implementing%20the%20Principle%20of%20Least%20Privilege,-The%20Principle%20of&text=The%20principle%20is%20used%20to,system%20or%20accessing%20confidential%20information [Accessed 24 March 2024]</p>
+											<p>Oblikwu, P., Dekera, K. & Udo, Edward. (2019). THE PRACTICALITY OF ENGINEERING PRINCIPLES IN SOFTWARE ENGINEERING. International Journal of Advanced Research. 7. 923-934. 10.21474/IJAR01/10234.</p>
+										</td>
+									</tr>
+								</table>
+							</section>	
+							<hr />
+							<section>
+								<h2>Blog posts</h2>
+								
+							</section>
+							<hr />
 							<section>
 								<h2>Artifacts</h2>
+								<p>I am a bit unsure on what to add here, whether I should follow the approach of the OOP module with scripts and/or add assignment progress notes and different resources used to complete the assignments.</p>
+							</section>
+							<hr />
+							<section>
+								<h2>Submissions</h2>
 								<div class="table-wrapper">
 									<table class="alt">
 										<thead>
@@ -505,7 +586,8 @@
 										</tfoot>
 									</table>
 								</div>
-							</section>							
+							</section>
+													
                         </div>
 					</div>
 
