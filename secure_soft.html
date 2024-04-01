@@ -52,6 +52,11 @@
 				margin-bottom: 2%;
 			}
 
+			.dropdown-content {
+			display: none;
+			}
+
+
 		</style>
 		<style type="text/css">
 			html { font-family:Calibri, Arial, Helvetica, sans-serif; font-size:11pt; background-color:white }
@@ -211,8 +216,8 @@
 								</blockquote>
 							</section>
 							<hr />
-							<section>
-								<h2>Swot analysis</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">Swot analysis</button>
+							<section style="width: 100%" id="dropdown1" class="dropdown-content">
                                 <p>Here I am presenting a SWOT analysis to track the areas in which I need improvement and what I consider my strong points. I find 
                                     this analysis extremely useful to see some progress and develop my skills matrix.
                                 Also, it will help me determine which roles and load I can more effectively take during the team project.</p>
@@ -271,8 +276,8 @@
 								</table>
 							</section>
 							<hr />
-							<section>
-								<h2>Skills matrix & action plan</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Skills matrix & action plan</button>
+							<section style="width: 100%" class="dropdown-content" id="dropdown2">
 								<table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
 									<col class="col0">
 									<col class="col1">
@@ -464,8 +469,8 @@
 								</p>
 							</section>
 							<hr />
-							<section>
-								<h2>Reflective piece</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown3')">Reflective piece</button>
+							<section style="width: 100%" id="dropdown3" class="dropdown-content">
 								<blockquote>
 									<p>
 										I am to still write my reflection as I grow into the module.
@@ -480,18 +485,17 @@
 								</blockquote>
 							</section>
 							<hr />
-							<section style="width: 100%">
-								<h2>Collaborative discussions</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown4')">Collaborative discussions</button>
+							<section style="width: 100%" id="dropdown4" class="dropdown-content">
 								<table>
 									<tr style="border: 1px solid black;">
 										<td>
 											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 1 – Broken access control</h4>
 											<p style="font-size: small;">by Miguel Maide Bezares</p>
-											<p style="margin-top: 1%; margin-bottom: 1%;">Broken access is a vulnerability that occurs when an application or system can be subject to attacks that bypass legitimate authorisations and perform unauthorised tasks. This is the first ranked risk in the OWASP “Top Ten Application Security Risks” (OWASP, 2021) and also identified by The MITRE Corporation (2023),  as one of the “2023 CWE Top 25 Most Dangerous Software Weaknesses”. They break it down to: Improper Authentication, Improper Limitation of a Pathname to a restricted Directory and Improper Privilege Management. 
-												Not taking careful consideration to these aspects when designing an application or software, may lead to data breaches, identity theft, financial losses and impact organization reputation. One of the biggest examples of this technique being used fraudulently takes us back to the Equifax breach in 2017, with more than $400 million lost and 147 million affected people. Equifax did not properly segment and maintain their systems, and hackers entered their system through a complaint web portal. 
-												Saltzer and Schroeder (1975) define the concept “work factor”, which states that the amount of effort required to defeat a security mechanism should be proportional to the value of the information being protected.
-												Here is a proposed UML flowchart that represents exposure of our system to broken access control and some modifications to enforce legitimate access to data. Some of the changes are directly done on the API itself with secure HTML fetching HTTPS protocol and the server using SSL/TLS encryption. Then login attempts are counted (max 5), multi-factor authentication (MFA) implemented and the application keeps track of the user details to avoid personification after the MFA has passed.</p>
-											<img style="width:100%;" src="images/UML_discussion1.png" alt="">
+											<p style="margin-top: 1%; margin-bottom: 1%;">Broken access is a vulnerability that occurs when an application or system can be subject to attacks that bypass legitimate authorisations and perform unauthorised tasks. This is the first ranked risk in the OWASP “Top Ten Application Security Risks” (OWASP, 2021) and also identified by The MITRE Corporation (2023),  as one of the “2023 CWE Top 25 Most Dangerous Software Weaknesses”. They break it down to: Improper Authentication, Improper Limitation of a Pathname to a restricted Directory and Improper Privilege Management. </p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Saltzer and Schroeder (1975) define the concept “work factor”, which states that the amount of effort required to defeat a security mechanism should be proportional to the value of the information being protected.</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Here is a proposed UML flowchart that represents exposure of our system to broken access control and some modifications to enforce legitimate access to data. Some of the changes are directly done on the API itself with secure HTML fetching HTTPS protocol and the server using SSL/TLS encryption. Then login attempts are counted (max 5), multi-factor authentication (MFA) implemented and the application keeps track of the user details to avoid personification after the MFA has passed.</p>	
+											<img style="width:100%;" src="images/UML_discussion1.png" alt="UML graphs">
 											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
 											<p style="margin-bottom: 1%;">Saltzer, J.H. and Schroeder, M.D. (1975). The protection of information in computer systems. Proceedings of the IEEE, 63(9), pp.1278–1308. doi:https://doi.org/10.1109/proc.1975.9939.</p>
 											<p style="margin-bottom: 1%;">‌OWASP (2021). OWASP Top Ten. [online] Owasp.org. Available at: https://owasp.org/www-project-top-ten/.</p>
@@ -545,17 +549,41 @@
 										</td>
 									</tr>
 								</table>
+								<table>
+									<tr style="border: 1px solid black;">
+										<td class="mine">
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion Summary – Broken access control</h4>
+											<p style="font-size: small;">by Miguel Maide Bezares</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Hi everyone, thank you for logging some responses and the constructive feedback. I have made some changes to the initial discussion, as I agree with many of the points you raised.</p>
+											<p style="margin-top: 1%; margin-bottom: 2%;">Firstly, I added titles to the UML diagrams so they are clearly labelled and easier to follow, as well as thickening the swim lanes as many lines were crossing others, to better divide the different systems involved in performing the request. The right-side diagram was changed, I added one more lane, as the multi-factor authentication (MFA) should be a process on its own. Grimes (2021) made a book on MFA hacking and many of the implementations were taken from his piece. </p>
+											<ul>
+												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">If the user was active in the Identity Management system (IDM), the MFA could open a request to process a one-time password (OTP).</li>
+												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">If the OTP requests exceed 2, the system will block the request and notify ADMIN and USER. OTP generation on its own is a complicated and extensive process, with several methodologies presented in Grimes (2021). The most used ones are hashed (HOTP) and time-based (TOTP).</li>
+												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">Added an extra-level of security in-APP level, where the user signature is hashed, so that this prevents malicious users from impersonating this user by stealing their data. Hashing assigns the password a set-length key of characters (special, binary, ASCII). The app would compare both initial and final hashed keys, to avoid any tampering.</li>
+												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">As a minor change, the UML now shows the correct login count block in the APP lane.</li>
+											</ul>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Despite all the techniques used to make OTP generation secure, OTP codes can still be subject to tampering and hijacking. The introduction of quantum computers would improve this substantially, due to the physical characteristics of the quantum particles, with an unprecedented level of randomness (Zhou, Stoudenmire and Waintal, 2020).</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">There are other external techniques to prevent hijacking of the APP, by limiting the privileges given to the users accessing it, like the Principle of Least Privilege (Maric, 2023) or cloud role access control like Amazon (2024) AWS.</p>
+											<img style="width:100%;" src="images/UML_discussion2.png" alt="UML graphs">
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p style="margin-bottom: 1%;">Zhou, Y., Stoudenmire, E.M. and Waintal, X. (2020). What Limits the Simulation of Quantum Computers? Physical Review X, 10(4). doi:https://doi.org/10.1103/physrevx.10.041038. [Accessed 30 March 2024 ].</p>
+											<p style="margin-bottom: 1%;">Grimes, R.A. (2021). Hacking multifactor authentication. [online] Indianapolis, In: John Wiley & Sons, Inc. Available at: https://learning.oreilly.com/library/view/hacking-multifactor-authentication/9781119650799/ [Accessed 30 March 2024].</p>
+											<p style="margin-bottom: 1%;">Maric, N. (2023) Broken Access Control: Attack Examples and 4 Defensive Measures. December 29, 2023. Available from https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/#:~:text=Implementing%20the%20Principle%20of%20Least%20Privilege,-The%20Principle%20of&text=The%20principle%20is%20used%20to,system%20or%20accessing%20confidential%20information [Accessed 1 April 2024]</p>
+											<p style="margin-bottom: 1%;">Amazon (2024) AWS Identity and Access Management. Available from: https://aws.amazon.com/iam/ [Accessed 1 April 2024]</p>
+										</td>
+									</tr>
+								</table>
 							</section>	
 							<hr />
-							<section>
-								<h2>Blog posts</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown5')">Blog posts</button>
+							<section style="width: 100%" id="dropdown5" class="dropdown-content">
 								<table>
 									<tr style="border: none;">
 										<td style="width: 20%;">
 										<img src="images/pass_photo.png" alt="" style="width: 100%;">
 										</td>
 										<td style="vertical-align: middle;"><h4>Managing an organisation to minimise internal attacks</h4>
-										<p">by Miguel Maide Bezares</p>
+										<p>by Miguel Maide Bezares</p>
 										</td>
 									</tr>
 									<tr style="border: none;" class="mine">
@@ -585,13 +613,13 @@
 								</table>
 							</section>
 							<hr />
-							<section>
-								<h2>Artifacts</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown6')">Artifacts</button>
+							<section style="width: 100%" id="dropdown6" class="dropdown-content">
 								<p>I am a bit unsure on what to add here, whether I should follow the approach of the OOP module with scripts and/or add assignment progress notes and different resources used to complete the assignments.</p>
 							</section>
 							<hr />
-							<section>
-								<h2>Submissions</h2>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown7')">Submissions</button>
+							<section style="width: 100%" id="dropdown7" class="dropdown-content">
 								<div class="table-wrapper">
 									<table class="alt">
 										<thead>
@@ -678,6 +706,16 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				// Function to toggle the dropdown content
+				function toggleDropdown(dropdownId) {
+				  var dropdownContent = document.getElementById(dropdownId);
+				  if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+				}
+			</script>
 	</body>
 </html>
