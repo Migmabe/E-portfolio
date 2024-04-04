@@ -56,6 +56,18 @@
 			display: none;
 			}
 
+			#dropdown-button {
+            width: 100%; 
+            padding: 10px; 
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+
+			select {
+				font-weight: bold;
+				padding: 5px;
+			}
 
 		</style>
 		<style type="text/css">
@@ -615,7 +627,14 @@
 							<hr />
 							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown6')">Artifacts</button>
 							<section style="width: 100%" id="dropdown6" class="dropdown-content">
-								<p>I am a bit unsure on what to add here, whether I should follow the approach of the OOP module with scripts and/or add assignment progress notes and different resources used to complete the assignments.</p>
+								<p>Here is where you will find all the reflections, coding exercises and some research</p>
+								<select id="pages" name="pages" onchange="window.location.href=this.value;">
+									<option value="" selected disabled hidden>Select a page...</option>
+									<option value="page1.html">Page 1</option>
+									<option value="page2.html">Page 2</option>
+									<option value="page3.html">Page 3</option>
+								</select>
+							
 							</section>
 							<hr />
 							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown7')">Submissions</button>
