@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			h3.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+            .center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<div id="wrapper" style="margin-top: 4%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 3</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Programming Languages: History, Concepts & Design</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">SCRUM security review</button>
+                        <div style="width: 100%" id="dropdown1" class="dropdown-content">
+                            <p>I explored a SCRUM solution proposed by Pohl and Hof (2015), where the add 4 new categories in the normal SCRUM to identify security issues during software development.
+                                Let's explore them:
+                            </p>
+                            <figure class="center">
+                                <img src="images/secure_scrum.png" alt="secure_scrum">
+                                <figcaption>Fig. 1: Integration of Secure Scrum components into standard SCRUM.</figcaption>
+                            </figure>
+                            <ul style="margin-top: 2%;">
+                                <li>IDENTIFICATION: identify security issues, these are marked in the Product Backlog of Scrum.</li>
+                                <li>IMPLEMENTATION: raise awareness of the SCRUM team for security during sprint.</li>
+                                <li>VERIFICATION: testing.</li>
+                                <li>DEFINITION OF DONE: check timeline for identified and tackled issue and focus on problems the team is not aware of.</li>
+                            </ul>
+                            <p>See how each category is related to the original SCRUM categories in Fig. 1.</p>
+                        </div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Pohl, C. and Hof, H.-J. (2015). Secure Scrum: Development of Secure Software with Scrum. ArXiv, [online] abs/1507.02992. Available at: https://api.semanticscholar.org/CorpusID:9209666.</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>

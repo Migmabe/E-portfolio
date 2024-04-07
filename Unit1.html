@@ -7,19 +7,97 @@
 		<link rel="stylesheet" href="assets/css/main.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
 		<style>
-			.custom-header {
+			.table-custom tr, td {
+				border: none;
 				background-color: rgb(196, 223, 223);
+				width: 50%
 			}
 
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			h3.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.ref p {
+				margin-bottom: 1.5%;
+			}
+			
 		</style>
     </head>
 	<body class="is-preload">
-		<div id="wrapper">
-			<div id="main">
+		<div id="wrapper" style="margin-top: 4%">
+			<div id="main" style="padding-bottom: 4%;">
 				<div class="inner">
-					<h2>Unit</h2>
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 1</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Introduction to Secure Software Development</h2>
+							</td>
+						</tr>
+					</table>
+					<section class="ref">
+						<h3 class="override">Short reflection</h3>
+						<p>I start the module with great motivation, hoping for a more enriching experience than in the last. This module aims to give me the necessary basic tools and knowledge to follow secure development practices. 
+							Several attacks will be explored, and the coursework seems rather interesting with group coursework  and individual system implementation based on that document. </p>
+						<p>This week we refreshed concepts in UML and visited some of the standards which we will use throughout the module. These are the OWASP (Open Web Application Security Project)  and MITRE.
+							The lecturecast also introduced me to some approaches to develop software; SDLC (Software Development Life Cycle). </p>
+						<p>I also created my first post in the forum. Here, I identify broken access control as per OWASP and developed a couple of UML models that show how to mitigate it and what can lead to the weakness ocurring.</p>
+						<p>
+							I am quite excited of the way forward! 
+						</p>
+						</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+						<p>There are no activities for this unit.</p>
+						<p>Maybe add the table (from doc module notes) where i explain the use cases of UML according to TOGAF and SDLC</p>
+					</section>
 				</div>
 			</div>
+			<footer id="footer" style="padding-top: 3%;">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p style="margin-bottom: 1%;">The MITRE Corporation (2023). CWE - 2023 CWE Top 25 Most Dangerous Software Weaknesses. [online] Available at: https://cwe.mitre.org/top25/archive/2023/2023_top25_list.html.</p>	
+					<p style="margin-bottom: 1%;">‌OWASP (2021). OWASP Top Ten. [online] Owasp.org. Available at: https://owasp.org/www-project-top-ten/.</p>
+				</div>
+			</footer>
 		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
 	</body>
 </html>
