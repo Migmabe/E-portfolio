@@ -26,12 +26,23 @@
 				margin: 0 auto;
 			}
 
-			h3.override {
+			.dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.override {
 				text-transform: inherit;
 				color: #585858;
 				display: inline-block;
 				border-bottom: 2px solid #585858;
 				margin-bottom: 3%;
+			}
+
+			.subsection_paragraph{
+				display: inline-block;
+				border-bottom: 1px solid #585858;
+				margin-bottom: 3%;
+				font-style: italic;
 			}
 
 			.dropdown-content {
@@ -52,6 +63,13 @@
                 margin-top: 10px; /* Optional: Add margin between image and caption */
             }
 
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
 
 		</style>
     </head>
@@ -80,30 +98,88 @@
 					<hr>
 					<section>
 						<h3 class="override">Unit activities</h3>
-                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">SCRUM security review</button>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">Team discussion: What is a Secure Programming Language?</button>
                         <div style="width: 100%" id="dropdown1" class="dropdown-content">
-                            <p>I explored a SCRUM solution proposed by Pohl and Hof (2015), where the add 4 new categories in the normal SCRUM to identify security issues during software development.
-                                Let's explore them:
-                            </p>
-                            <figure class="center">
-                                <img src="images/secure_scrum.png" alt="secure_scrum">
-                                <figcaption>Fig. 1: Integration of Secure Scrum components into standard SCRUM.</figcaption>
-                            </figure>
-                            <ul style="margin-top: 2%;">
-                                <li>IDENTIFICATION: identify security issues, these are marked in the Product Backlog of Scrum.</li>
-                                <li>IMPLEMENTATION: raise awareness of the SCRUM team for security during sprint.</li>
-                                <li>VERIFICATION: testing.</li>
-                                <li>DEFINITION OF DONE: check timeline for identified and tackled issue and focus on problems the team is not aware of.</li>
-                            </ul>
-                            <p>See how each category is related to the original SCRUM categories in Fig. 1.</p>
-                        </div>
+							<p><b>What factors determine whether a programming language is secure or not?</b></p>
+							<p>Cifuentes and Bierman (2019) states that programming languages are inherently insecure as most of them are underpinned on old tools and techniques. This gives way to new approaches to produce intrinsically safe languages. Nevertheless, we still need to take care of protecting our software with the currently available programming tools.</p>
+							<p>Pillai (2017) defines secure coding as the practices that inherently safeguard programs from malicious attacks. Furthermore, security requirements should be identified in the early stages of development of the program, and he identifies the practices to do so. These are the different practices in broad terms:</p>
+							<ol>
+								<li>Define software architecture to protect assets and identify components.</li>
+								<li>Review implementation and identify threats.</li>
+								<li>Risk mitigation and testing.</li>
+							</ol>
+							<p>Cifuentes and Bierman (2019) list the following categories of vulnerabilities that can be mitigated with secure software design:</p>
+							<ul>
+								<li>Buffer Errors</li>
+								<li>Injection Errors</li>
+								<li>Information Leak Errors</li>
+							</ul>
+							<p>On the other hand, Pillai (2017) emphasizes on a few other vulnerabilities that must be taken care of, apart from the ones Cifuentes and Bierman (2019) defined: </p>
+							<ul>
+								<li>Improper access control</li>
+								<li>Unvalidated input</li>
+								<li>Cryptography</li>
+								<li>Serialization/deserialization of code and data objects</li>
+							</ul>
+							<p>Let’s explore them with their proposed mitigations in more detail:</p>
+							<p class="subsection_paragraph">Buffer Errors</p>
+							<p>Buffer overflow allows attackers to take control of systems by writing off-buffer bounds manually crafted code, or simply clogging your program into a deadlock with mathematical operations. </p>
+							<p>To mitigate it, Pillai (2017) uses exception handlers to show a custom error message. On the other hand, Cifuentes and Bierman (2019) defines managed memory, such as garbage collection very effective as well as borrowing objects so they are self-destroyed when out of scope. More complex but effective methods are presented by Chen et al., (2013), like pointer encryption and address randomization. However there’s a drawback to these, as the application will be immediately terminated if overflow detected.</p>
+							<p class="subsection_paragraph">Injection Errors</p>
+							<p>Injection errors, or injection attacks exploit unvalidated input vulnerabilities (Pillai, 2017). Using this attack, malicious actors can insert arbitrary code instead of legitimate input. According to Cifuentes and Bierman (2019) examples of this attack are:</p>
+							<ul>
+								<li>SQL injections – if a website is susceptible to this attack, attackers can write SQL code instead of genuine information into an input field (e.g. a login page username field).</li>
+								<li>Cross Site Scripting (XSS) – this attack involves injecting harmful code into a trustworthy website compromising data.</li>
+								<li>Shell Execution Exploits, also known as command injection – attacker exploits vulnerable applications to run system level commands (Zhong, N.D.)</li>
+							</ul>
+							<p>In addition to these attacks, Pillai (2017) also lists below vulnerability:</p>
+							<ul>
+								<li>Server-Side Template Injections – server-side templates of web frameworks are used to execute malicious code.</li>
+							</ul>
+							<p>To mitigate the SQL injection and XSS attacks Pillai (2017) lists the following strategies amongst the top 10:</p>
+							<ul>
+								<li>Validate inputs – ensure that data inserted by the user matches the data type of the input field.</li>
+								<li>Principle of least privilege – only necessary permissions should be assigned to users to carry out their work.</li>
+							</ul>
+							<p class="subsection_paragraph">Information Leak Errors</p>
+							<p>Cifuentes and Bierman (2019) define it as the release of information to an untrusted environment. Similarly, open access to files, folders, and databases can lead to data breaches if not properly restricted to authorized users. Race conditions, caused by simultaneous access to resources without synchronization, can allow attackers to insert malicious code or disrupt operations. System clock drifts can introduce security flaws, such as SSL certificate validation errors, which can be exploited by timing attacks.</p>
+							<p>To mitigate these, Pillai (2017) suggests implementing proper access controls, synchronization mechanisms, and time synchronization protocols. Cifuentes and Bierman (2019) take the mitigation beyond program boundaries and explain that faceted values provide a strong solution as they also back databases using policies and data tagging for different security data.</p>
+							<p class="subsection_paragraph">Improper access control</p>
+							<p>This vulnerability allows attackers to gain access to sensitive data, or even the whole system. Incorrectly implemented access control mechanisms can expose routes and workflows to an attacker, which can in turn be utilised to expose sensitive data (Pillai, 2017).</p>
+							<p>To mitigate this vulnerability, Pillai (2017) suggests that applications should have clearly defined roles and privileges for each type of users, such as administrators, superusers, standard users, etc.</p>
+							<p class="subsection_paragraph">Unvalidated input</p>
+							<p>It is extremely important to clean the input as malicious code can be inserted into the input to gain access to unauthorised data. 
+								There are several mitigation methods, but a very sensible one for example, using newer and safer string formatting than just using unsafe %s interpolation (Pillai, 2017).
+							</p>
+							<p class="subsection_paragraph">Cryptography</p>
+							<p>It is a big field in security with many branches and applications. It introduces concepts such as hashing, secure protocols (HTTPS), strong asymmetric key encryption and server and computer encryption (SSL and GPG respectively). </p>
+							<p>Cryptography can be difficult to bypass if well implemented, but to ensure the maximum protection, always look at hashes rather than comparing memory allocation. These can be implemented in several rounds, for extra security (Passlib is presented as a good ciphering tool in Python) according to (Pillai, 2017).</p>
+							<p class="subsection_paragraph">Serialization/deserialization of code and data objects</p>
+							<p>Quite trivial, when problems start to arise by not using the latest library versions and Python builds.</p>
+							<p>Python versions have improved security aspects like trying to trick the output by entering a certain input, exposing hard-coded data. Python 2.x would expose some hard-coded data easily when no error exceptions are handled, but the same issues do not apply to Python 3.x (Pillai, 2017).</p>
+							<p><b>Could Python be classed as a secure language? Justify your answer.</b></p>
+							<p>Cifuentes and Bierman (2019) argue that not a single major programming language today, including Python, can be regarded as fool proof from any attacks. In support of this, Pillai (2017) discusses some threats Python is susceptible to:</p>
+							<ol>
+								<li>Phishers can disclose unprotected global variables and password when reading inputs from the console.</li>
+								<li>Attackers can take advantage of the ‘eval’ function to deliberately fail interpreters and take the reins over them.</li>
+								<li>Interception of software during buffer overflow exceptions.</li>
+								<li>Code can be carried out without monitoring in the ‘pickle’ module.</li>
+								<li>Unauthorised access is accepted once hackers get inside the system during Server Side Template Injection (SSTI).</li>
+								<li>Applications cannot function accordingly due to Denial of Service (DOS), when systems are intentionally overloaded.</li>
+								<li>Hostile scripts can be inserted in systems during Cross-Site Scripting (XSS) to take command of programs.</li>
+							</ol>
+							<p>However, there are strategies that can be implemented in order to alleviate vulnerabilities in Python. These include better handling of classified information such as passwords, keeping abreast of the latest trends in cyber security, and regularly applying security updates (Pillai, 2017). 
+								Therefore, despite not being a fully secure language, developers can follow these recommendations to lessen threats and weaknesses in Python.</p>
+							<p><b>Python would be a better language to create operating systems than C. Discuss.</b></p>
+							<p>Operating systems (OS) serve as the layer between computer hardware and software. Mwiinga (2023) suggests that in order to fulfill this role, an OS must include, among others, the following functions:</p>
+							<ul></ul>
+						</div>
                     </section>
 				</div>
 			</div>
 			<footer id="footer" style="padding-top: 3%;">
 				<div class="inner">
 					<h3 class="override">References</h3>
-					<p>Pohl, C. and Hof, H.-J. (2015). Secure Scrum: Development of Secure Software with Scrum. ArXiv, [online] abs/1507.02992. Available at: https://api.semanticscholar.org/CorpusID:9209666.</p>
 				</div>
 			</footer>
 		</div>
