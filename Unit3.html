@@ -71,6 +71,10 @@
 				padding-left: 5%;
 			}
 
+			.footer div p {
+				margin-bottom: 1%;
+			}
+
 		</style>
     </head>
 	<body class="is-preload">
@@ -172,14 +176,63 @@
 								Therefore, despite not being a fully secure language, developers can follow these recommendations to lessen threats and weaknesses in Python.</p>
 							<p><b>Python would be a better language to create operating systems than C. Discuss.</b></p>
 							<p>Operating systems (OS) serve as the layer between computer hardware and software. Mwiinga (2023) suggests that in order to fulfill this role, an OS must include, among others, the following functions:</p>
-							<ul></ul>
+							<ul>
+								<li>Process management.</li>
+								<li>Memory management.</li>
+							</ul>
+							<p>There are many considerations to be made when selecting a programming language to develop these functions, but we will focus here on performance and security and discuss whether the attributes of the Python programming language make it more suitable for such tasks than the C programming language.</p>
+							<p class="subsection_paragraph">Performance</p>
+							<p>A modern OS such as Microsoft Windows 10 can be expected to run hundreds of processes concurrently. It is essential therefore that each process runs as efficiently as possible. This is one area in which the C language has a clear advantage given that it is a compiled language. In contrast, Python is an interpreted language and requires extra time to be converted into machine code by the interpreter (Zehra et al, 2020). 
+								As such, the difference in performance can be considerable. Zehra et al show that when performing a memory insertion algorithm, the average time taken for a program written in C++ was 0.006ms versus 0.028ms for the Python program – a greater than fourfold increase in execution time.</p>
+							<p>Memory management is another area in which compiled languages such as C have a clear advantage. In Python, as a dynamically typed language, memory management is handled at runtime and therefore does not offer the programmer the ability to finely tune memory usage. As a result, similar processes occupy considerably larger amounts of memory. This was demonstrated by Zehra et al who showed that a memory sorting algorithm written in C++ used 5.4KB versus 11.7KB for Python – a more than twofold increase. 
+								This would be particularly concerning for an OS considering the number of concurrent processes in memory. If we were to assume the above example was typical, then an OS written in Python would require twice the RAM of an OS written in C.</p>
+							<p class="subsection_paragraph">Security</p>
+							<p>Security threats targeting the Windows OS are numerous thanks to the ubiquity of the OS, requiring Microsoft to release frequent security updates. As such, when developing an OS, it is essential that the language used in its development is as secure as possible. 
+								Cifuentes and Bierman (2019) break down security threats into three categories: buffer errors, injection errors and information leak errors and later show that no mainstream programming language can protect against all three categories. However buffer errors occur as a result of manual management of memory pointers, suggesting that Python, having automated memory management, may not be as susceptible to this.</p>
+							<p class="subsection_paragraph">Conclusion</p>
+							<p>As we have seen, neither C nor Python can be regarded as a fully secure programming language, but there does not appear to be a reason to avoid Python from a security perspective. The difference in performance and memory management however suggests that Python would not be suitable as a language in which to develop an OS, therefore the suggestion that Python would be better than C for this task cannot be supported.</p>
+						</div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Activity: Exploring Python tools and features</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+						<p><b>Buffer overflow in C</b></p>
+						<p>This is the provided piece of code:</p>
+						<pre style="margin-bottom: 0%;">
+							<code>
+#include &lt;stdio.h&gt;
+
+int main(int argc, char **argv)
+{
+    char buf[8];             // buffer for eight characters
+    printf("Enter name: ");
+    gets(buf);               // read from stdio (sensitive function!)
+    printf("%s\n", buf);     // print out data stored in buf
+    return 0;                // 0 as return value
+}
+							</code>
+						</pre>
+						<p>And here the compiled and ran code using the terminal in MacOS using the gcc compiler:</p>
+						<figure class="center">
+							<img src="images/bufferov_c.png" alt="MacOS terminal">
+							<figcaption>Fig. 1: Buffer overflow script ran in terminal</figcaption>
+						</figure>
+						<p>The output is “zsh: abort”, and this one is a Z shell abortion command, encountered when there are syntax errors, command not found issues, interruptions and importantly, memory allocation errors.</p>
+						<p>Apparently, when using the enriched prompts from the GNU C library (glibc), the prompt looks slightly different, and gives us more information. This is a buffer overflow protection mechanism in the GCC compiler via protection variables (canaries) that have known values. If the input, which is assigned to a canary corrupts it, the program will terminate. The output would look like:</p>
+						<p>“*** stack smashing detected ***: terminated” -- Stack Overflow (N.D.)</p>
+						<p><b></b></p>
 						</div>
                     </section>
 				</div>
 			</div>
-			<footer id="footer" style="padding-top: 3%;">
+			<footer id="footer" style="padding-top: 3%;" class="footer">
 				<div class="inner">
 					<h3 class="override">References</h3>
+					<p>Chen, G., Jin, H., Zou, D., Zhou, B.B., Liang, Z., Zheng, W. & Shi, X. (2013) SafeStack: Automatically Patching Stack-Based Buffer Overflow Vulnerabilities. IEEE Transactions on Dependable and Secure Computing 10(6): 368-379. DOI: https://doi.org/10.1109/tdsc.2013.25.</p>
+					<p>Cifuentes, C. & Bierman, G. (2019) What is a Secure Programming Language? 3rd Summit on Advances in Programming Languages (SNAPL) 136(3): 1-15. DOI:  https://doi.org/10.4230/LIPIcs.SNAPL.2019.3.</p>
+					<p>Mwiinga, P. (2023) OPERATING SYSTEM. Available from: https://www.researchgate.net/publication/372132620_OPERATING_SYSTEM [Accessed 27 March 2024].</p>
+					<p>Pillai, A.B. (2017) Software Architecture with Python: Design and architect highly scalable, robust, clean, and high performance applications in Python. 1st ed. Birmingham, UK: Packt Publishing. Available from: https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=1513359&site=ehost-liv [Accessed 27 March 2024].</p>
+					<p>Zehra, F., Javed, M., Khan, D. & Pasha, M. (2020) Comparative Analysis of C++ and Python in Terms of Memory and Time. Preprints. DOI: https://doi.org/10.20944/preprints202012.0516.v1.</p>
+					<p>Zhong, W. (N.D.) Command Injection | OWASP Foundation. Available from: https://owasp.org/www-community/attacks/Command_Injection [Accessed 27 March 2024].</p>
+					<p>Stack Overflow. (n.d.). Stack smashing detected. [online] Available at: https://stackoverflow.com/questions/1345670/stack-smashing-detected.</p>
 				</div>
 			</footer>
 		</div>
