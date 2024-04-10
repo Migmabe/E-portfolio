@@ -194,10 +194,10 @@
 						</div>
 						<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Activity: Exploring Python tools and features</button>
 						<div style="width: 100%" id="dropdown2" class="dropdown-content">
-						<p><b>Buffer overflow in C</b></p>
-						<p>This is the provided piece of code:</p>
-						<pre style="margin-bottom: 0%;">
-							<code>
+							<p><b>Buffer overflow in C</b></p>
+							<p>This is the provided piece of code:</p>
+							<pre style="margin-bottom: 0%;">
+								<code>
 #include &lt;stdio.h&gt;
 
 int main(int argc, char **argv)
@@ -208,17 +208,132 @@ int main(int argc, char **argv)
     printf("%s\n", buf);     // print out data stored in buf
     return 0;                // 0 as return value
 }
-							</code>
-						</pre>
-						<p>And here the compiled and ran code using the terminal in MacOS using the gcc compiler:</p>
-						<figure class="center">
-							<img src="images/bufferov_c.png" alt="MacOS terminal">
-							<figcaption>Fig. 1: Buffer overflow script ran in terminal</figcaption>
-						</figure>
-						<p>The output is “zsh: abort”, and this one is a Z shell abortion command, encountered when there are syntax errors, command not found issues, interruptions and importantly, memory allocation errors.</p>
-						<p>Apparently, when using the enriched prompts from the GNU C library (glibc), the prompt looks slightly different, and gives us more information. This is a buffer overflow protection mechanism in the GCC compiler via protection variables (canaries) that have known values. If the input, which is assigned to a canary corrupts it, the program will terminate. The output would look like:</p>
-						<p>“*** stack smashing detected ***: terminated” -- Stack Overflow (N.D.)</p>
-						<p><b></b></p>
+								</code>
+							</pre>
+							<p>And here the compiled and ran code using the terminal in MacOS using the gcc compiler:</p>
+							<figure class="center">
+								<img src="images/bufferov_c.png" alt="MacOS terminal">
+								<figcaption>Fig. 1: Buffer overflow script ran in terminal</figcaption>
+							</figure>
+							<p style="margin-top: 3%;">The output is “zsh: abort”, and this one is a Z shell abortion command, encountered when there are syntax errors, command not found issues, interruptions and importantly, memory allocation errors.</p>
+							<p>Apparently, when using the enriched prompts from the GNU C library (glibc), the prompt looks slightly different, and gives us more information. This is a buffer overflow protection mechanism in the GCC compiler via protection variables (canaries) that have known values. If the input, which is assigned to a canary corrupts it, the program will terminate. The output would look like:</p>
+							<p style="margin-bottom: 5%;">“*** stack smashing detected ***: terminated” -- Stack Overflow (N.D.)</p>
+							<p><b>Buffer overflow in Python</b></p>
+							<p>The proposed code was the following, and follows the same principle of storing more data into an object than the amount it can take:</p>
+							<pre>
+								<code>
+buffer = [None] * 10
+for i in range(0, 14)
+	buffer[i] = 7						
+print(buffer)	
+								</code>
+							</pre>
+							<p>When running this piece of code, the program stops and flags the index out of range error. We are trying to save 14 values into a list with only 10 available places. See fig. 2:</p>
+							<figure class="center">
+								<img src="images/bufferov_python.png" alt="Python terminal">
+								<figcaption>Fig. 2: Buffer overflow in Python's terminal</figcaption>
+							</figure>
+							<p style="margin-top: 3%;">After installing Pylint, an engine that statically checks and gives feedback according to PEP8 standards, it flagged the following errors:</p>
+							<ul>
+								<li>Overflow.py:1:0: C0114: Missing module docstring (missing-module-docstring)</li>
+								<li>Overflow.py:1:0: C0103: Module name "Overflow" doesn't conform to snake_case naming style (invalid-name)</li>
+								<li>Your code has been rated at 5.00/10 (previous run: 0.00/10, +5.00)</li>
+							</ul>
+							<p style="margin-bottom: 5%;">Pylint did not give any hint as to how to solve the overflow error.</p>
+						</div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown3')">Activity: The producer-consumer mechanism</button>
+						<div style="width: 100%" id="dropdown3" class="dropdown-content">
+							<p>The producer-consumer problem simulates a semaphore that regulates the interaction between a producer and a consumer. In the provided code, several consumers are created prior to the producer. These consumers will be taking product from the producer if and only if there's product available in the producer's queue. This producer feeds several consumers, each represented with a thread. 
+								The queue architechture from the consumer ensures that only 1 item is removed at once, it will not allow more to avoid task repetition and overriding tasks. After taking the produce, the consumer processes the item and marks it as done. When the producer runs out of produce, the consumer threads are shut down and the main program thread exited. This is possible by using daemon threads, which will terminate as soon as the main one does. Here's the semaphore architecture:</p>
+							<figure class="center">
+								<img src="images/semaphore.jpeg" alt="Semaphore">
+								<figcaption>Fig. 3: Semaphore architecture, from Shene (2014)</figcaption>
+							</figure>
+							<p style="margin-top: 3%;">And here the proposed code:</p>
+							<pre>
+								<code>
+from threading import Thread
+from queue import Queue
+	
+q = Queue()
+final_results = []
+	
+def producer():
+	for i in range(100):
+		q.put(i)
+		
+	
+def consumer():
+	while True:
+		number = q.get()
+		result = (number, number**2)
+		final_results.append(result)
+		q.task_done()
+	
+	
+for i in range(5):
+	t = Thread(target=consumer)
+	t.daemon = True
+	t.start()
+	
+producer()
+	
+q.join()
+	
+print (final_results)
+								</code>
+							</pre>
+							<p>In this code, if the producer was to make something different to an integer or float, the program will not work as intended, as you cannot take the power of a string. I introduced a solution to the code, that by filtering the produce at the producer level, the consumers will be guaranteed the right input is fed to them. Then the consumers patiently wait for the filtered input and gather it from the producer's queue. Here is my proposed solution:</p>
+							<pre>
+								<code>
+import time
+from threading import Thread
+from queue import Queue
+
+q = Queue()
+
+entry = ["r", "a", "1", "0", "n", "g"]
+
+
+def producer():
+    for i in entry:
+	# Note the use of the try except block within the for loop, 
+	# so it's checked every time input (at this stage valid and invalid mixed) is produced
+        try:
+            print(f"List item {i} produced\n")
+            if float(i) or float(i) == False:
+                q.put(float(i))
+        except ValueError:
+            print("Input must be numerical")
+
+
+def consumer():
+    while True:
+        number = q.get()
+		# Introducing a sleep of 1 second here, simulates the consumer processing time
+        time.sleep(1)
+        print(f"Number {number} processed by consumer\n")
+        result = (number, number ** 2)
+        final_results.append(result)
+        q.task_done()
+        print(f"Task {number} done\n")
+
+
+final_results = []
+
+# Changed the number of threads to 2, to ensure every thread takes input with my proposed entry
+for i in range(2):
+    t = Thread(target=consumer)
+    t.daemon = True
+    t.start()
+
+producer()
+
+q.join()
+
+print(final_results)
+								</code>
+							</pre>
 						</div>
                     </section>
 				</div>
@@ -232,7 +347,8 @@ int main(int argc, char **argv)
 					<p>Pillai, A.B. (2017) Software Architecture with Python: Design and architect highly scalable, robust, clean, and high performance applications in Python. 1st ed. Birmingham, UK: Packt Publishing. Available from: https://search.ebscohost.com/login.aspx?direct=true&db=nlebk&AN=1513359&site=ehost-liv [Accessed 27 March 2024].</p>
 					<p>Zehra, F., Javed, M., Khan, D. & Pasha, M. (2020) Comparative Analysis of C++ and Python in Terms of Memory and Time. Preprints. DOI: https://doi.org/10.20944/preprints202012.0516.v1.</p>
 					<p>Zhong, W. (N.D.) Command Injection | OWASP Foundation. Available from: https://owasp.org/www-community/attacks/Command_Injection [Accessed 27 March 2024].</p>
-					<p>Stack Overflow. (n.d.). Stack smashing detected. [online] Available at: https://stackoverflow.com/questions/1345670/stack-smashing-detected.</p>
+					<p>Stack Overflow. (N.D.). Stack smashing detected. [online] Available at: https://stackoverflow.com/questions/1345670/stack-smashing-detected. [Accessed 27 March 2024]</p>
+					<p>Shene, K. (2014). Multithreaded Programming with ThreadMentor: A Tutorial. [online] Available at: https://pages.mtu.edu/~shene/NSF-3/e-Book/index.html [Accessed 10 Apr. 2024].</p>
 				</div>
 			</footer>
 		</div>
