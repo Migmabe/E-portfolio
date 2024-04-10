@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+            .center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+            .center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<div id="wrapper" style="margin-top: 4%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 4</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Exploring Programming Language Concepts</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">Research activity: Programming language concepts</button>
+                        <div style="width: 100%" id="dropdown1" class="dropdown-content">
+                            <p><b>What is ReDOS and what part do ‘Evil Regex’ play? </b></p>
+                            <p>According to Wiedman (N.D) ReDoS stands for Regular expression Denial of Service and exploits regular expression entering extreme situations for the program to make it process for a long time. </p>
+                            <p>According to Larson (2018), regular expressions are used in string validation as they process strings in certain format like patterns. </p>
+                            <p style="margin-bottom: 5%;">Wiedman (N.D) relates these as regex can overload a network, system or database by entering maliciously crafted input. </p>
+                            <p><b>What are the common problems associated with the use of regex? How can these be mitigated?</b></p>
+                            <p>Regex is not a very intuitive formal language and it causes many problems among people to understand it due to it being abstract and extensive symbolic notation (Ade-Ibijola, 2018). 
+                                According to Larson (2018) it is also problematic to programmers as it can easily incur errors due to long strings and character sequences. </p>
+                            <p>Ade-Ibijola (2018) introduces games, simulations and visualizers as a method to learn it in a more intuitive way. 
+                                However, he also proposes algorithms that convert the regular expressions (REs) into short-text responses and multiple-choice questions. </p>
+                            <p style="margin-bottom: 5%;">Larson (2018) on the other hand describes how the ACRE (Automatic Checking of Regular Expressions) engine can help flag issues in REs creation with 11 automatic checks. 
+                                Nevertheless, he warns about false alarms and a few expressions that might trigger these.</p>
+                            <p><b>How and why could regex be used as part of a security solution?</b></p>
+                            <p>In the most general cases, regex could be used to filter out unwanted requests preventing injections for instance at API level. 
+                                When trying to tamper the header of an API request, some attacks involve the creation of encoded characters to allow for Booleans that are always true to happen in html format. (Madden, 2020). </p>
+                            <p>Rathnayake and Thielecke (2014) explore how regex might also be used with a complementary tool like RXXR using backtracking to mitigate denial of service (DoS). Alongside with a different author, they expanded on the topic by explaining that this could be achieved through a parser that can transform the regex input into an abstract syntax tree (AST). 
+                                This one, with a series of rules based on complex logic, can filter out suspicious requests (Kirrage, Rathnayake and Thielecke, 2013). </p>
+                        </div>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Activity: Recursion</button>
+                        <div style="width: 100%" id="dropdown2" class="dropdown-content">
+                            <p>The Tower of Hanoi is the problem we are going to work with. There are 2 internal patterns going on to move the disks. There's the movement of the first disk to the origin pole, and the stacking of the first disk moved on top of the second and then third moved to origin again (loop complete). Here's the proposed solution:</p>
+                        </div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+                    <p>Ade-Ibijola, A. (2018). Synthesis of regular expression problems and solutions. International Journal of Computers and Applications, 42(8), pp.748–764. doi:https://doi.org/10.1080/1206212x.2018.1482398. [Accessed 3 April 2024]</p>
+                    <p>‌Larson, E. (2018). [Research Paper] Automatic Checking of Regular Expressions. doi:https://doi.org/10.1109/scam.2018.00034. [Accessed 4 April 2024]</p>
+                    <p>Wiedman (n.d.). Regular expression Denial of Service - ReDoS | OWASP. [online] Available at: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS. [Accessed 3 April 2024]</p>
+                    <p>Kirrage, J., Rathnayake, A. and Thielecke, H. (2013). Static Analysis for Regular Expression Denial-of-Service Attacks. arXiv (Cornell University). doi:https://doi.org/10.48550/arxiv.1301.0849. [Accessed 4 April 2024]</p>
+                    <p>Madden, N. (2020). Api Security In Action. [Accessed 4 April 2024]</p>
+                    <p>Thielecke, H. and Rathnayake, A., 2014. RXXR2: Regular expression denial of service (REDoS) static analysis. Available at: https://web.archive.org/web/20211027135828/https://www.cs.bham.ac.uk/~hxt/research/rxxr.shtml [Accessed 4 April 2024]</p>
+                </div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>
