@@ -47,15 +47,6 @@
                 margin-top: 3%;
             }
 
-            .center img {
-                display: block; /* Ensure the image is treated as a block-level element */
-                margin: 0 auto; /* Center the image horizontally */
-            }
-
-            .center figcaption {
-                margin-top: 10px; /* Optional: Add margin between image and caption */
-            }
-
 			ul {
 				padding-left: 5%;
 			}
@@ -66,6 +57,10 @@
 
 			.footer div p {
 				margin-bottom: 1%;
+			}
+
+			section p {
+				margin-bottom: 1.5%;
 			}
 
 		</style>
@@ -120,6 +115,10 @@
 					</table>
 					<section>
 						<h3 class="override">Short reflection</h3>
+						<p>This unit’s activities were rather interesting, especially the regex activity. I will use this engine to check for user input and password requirements in the final system implementation. 
+							Recursion is a topic that I had already touched upon on my previous modules, however I still find it abstract and sometimes difficult to grasp. I have to definitely improve on this field. </p>
+						<p>Regarding the group project the document is closer to being complete. We still had a few big questions to tackle but had a constructive meeting with Dr. Peoples. Our module leader gave us some feedback, 
+							but we were on the right track! We have to change some of our layout and include the tables into screenshot format to ease the wordcount. She also explained what her expectations are as to how to attack the system, but we still need some clarification on this. </p>
 					</section>
 					<hr>
 					<section>
@@ -146,7 +145,60 @@
                         <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Activity: Recursion</button>
                         <div style="width: 100%" id="dropdown2" class="dropdown-content">
                             <p>The Tower of Hanoi is the problem we are going to work with. There are 2 internal patterns going on to move the disks. There's the movement of the first disk to the origin pole, and the stacking of the first disk moved on top of the second and then third moved to origin again (loop complete). Here's the proposed solution:</p>
+							<pre style="margin-bottom: 0%;">
+								<code>
+def tower_of_hanoi(n, source, target, auxiliary):
+	if n == 1:
+		print(f"Move disk 1 from rod {source} to rod {target}")
+		return 1
+	moves = tower_of_hanoi(n - 1, source, auxiliary, target)
+	print(f"Move disk {n} from rod {source} to rod {target}")
+	moves += 1
+	moves += tower_of_hanoi(n - 1, auxiliary, target, source)
+	return moves
+
+
+def main():
+	n = int(input("Enter the number of disks: "))
+	total_moves = tower_of_hanoi(n, 'A', 'C', 'B')
+	print(f"Total moves executed: {total_moves}")
+
+
+if __name__ == "__main__":
+	# Run the program in a loop
+	main()
+								</code>
+							</pre>
+							<p>The disk limit by deafault is 998, as the maximum recursion depth (also by default) is 999 levels. However, this value can be mannually overriden and this is what needs to be taken care of. 
+								Recursion is a resource-intensive method and the more depth the more resources like RAM it will consume. In fact, Denial of Service (DoS) attacks could easily be implemented if this value was overriden, making the system incapable of solving the solution without exhausting all the resources.
+							</p>
                         </div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown3')">Activity: Regex</button>
+						<div style="width: 100%" id="dropdown3" class="dropdown-content">
+							<p>Regex is a text searching tool with very powerful capabilities. I will implement regex in my ISS login part, to filter and verify password requirements.</p>
+							<p>For this unit's activity I produced a regex script that would filter out invalid UK postocodes, as it will look at the right formatting for the postcode. Given the rules for a UK postocode to follow, I tailored my regex statement to this format. These are the set of rules that must be followed to produce a UK postcode:</p>
+							<ol style="margin-bottom: 0%;">
+								<li>Format looks something like this: BS7 0QP</li>
+								<li>Outward code between 2-4 characters, always starts with a letter and ends with a space</li>
+								<li>Inward code exactly 3 characters long and begins with a number</li>
+							</ol>
+							<pre style="margin-bottom: 0%;">
+								<code>
+postcode = "ST7 9HV"
+
+# Pre-compile the pattern and store in a variable
+pattern = re.compile(r"^[a-z][a-zA-Z0-9]{1,3}\s[0-9][a-zA-Z0-9]{2}", re.I)
+
+re_object = pattern.search(postcode)
+
+if re_object:
+    print(f"Correct postcode!: {re_object.group()}")
+else:
+    print("Invalid format.")
+								</code>
+							</pre>
+							<p>My regex implementation uses the curly brace syntax {} to ensure the length of the query matches the one allowed by a postcode. As such, injection attacks are extensively mitigated where you would need to pass a hidden boolean that always yields true for instance.</p>
+						</div>
                     </section>
 				</div>
 			</div>
