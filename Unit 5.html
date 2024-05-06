@@ -42,14 +42,11 @@
 				margin-bottom: 1.5%;
 			}
 
-            .center {
+			.center {
                 text-align: center; /* Center-align the content */
                 margin-top: 3%;
-            }
-
-            .center img {
-                display: block; /* Ensure the image is treated as a block-level element */
-                margin: 0 auto; /* Center the image horizontally */
+				font-style: italic;
+				color: red;
             }
 
             .center figcaption {
@@ -64,8 +61,14 @@
 				padding-left: 5%;
 			}
 
+			section p{
+				margin-bottom: 1.5%;
+			}
+
 			.footer div p {
 				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
 			}
 
 		</style>
@@ -106,7 +109,7 @@
 					<table class="table-custom">
 						<tr>
 							<td>
-								<h1>Unit 4</h1>
+								<h1>Unit 5</h1>
 							</td>
 							<td style="text-align: right;">
 								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
@@ -114,52 +117,272 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<h2>Exploring Programming Language Concepts</h2>
+								<h2>An Introduction to Testing</h2>
 							</td>
 						</tr>
 					</table>
 					<section>
 						<h3 class="override">Short reflection</h3>
+						<p>This week was rather intense, personally and professionally. I had to really manage my time well as I was away for the week, and did not have much time, so had to make use of every free minute.</p>
+						<p>The design document is done with a final check to be done altogether with the group. I really enjoyed mapping the OWASP security risks with their MITRE codes and back to our application. I could effectively rank our application into level 2, this point was raised last week when Dr. People’s asked if the resources used to secure our system were proportional to the value thereof.</p>
+						<p>I also explored the concept of Cyclomatic Complexity, and found it rather interesting, with complex programs having values that surpass the 1000 mark. More on this on the next section, but it is basically the amount of decision points on our code. These could be assertions, else statements, exceptions…</p>
 					</section>
 					<hr>
 					<section>
 						<h3 class="override">Unit activities</h3>
-                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown1')">Research activity: Programming language concepts</button>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Research activity: Exploring the Cyclomatic Complexity’s Relevance Today</button>
                         <div style="width: 100%" id="dropdown1" class="dropdown-content">
-                            <p><b>What is ReDOS and what part do ‘Evil Regex’ play? </b></p>
-                            <p>According to Wiedman (N.D) ReDoS stands for Regular expression Denial of Service and exploits regular expression entering extreme situations for the program to make it process for a long time. </p>
-                            <p>According to Larson (2018), regular expressions are used in string validation as they process strings in certain format like patterns. </p>
-                            <p style="margin-bottom: 5%;">Wiedman (N.D) relates these as regex can overload a network, system or database by entering maliciously crafted input. </p>
-                            <p><b>What are the common problems associated with the use of regex? How can these be mitigated?</b></p>
-                            <p>Regex is not a very intuitive formal language and it causes many problems among people to understand it due to it being abstract and extensive symbolic notation (Ade-Ibijola, 2018). 
-                                According to Larson (2018) it is also problematic to programmers as it can easily incur errors due to long strings and character sequences. </p>
-                            <p>Ade-Ibijola (2018) introduces games, simulations and visualizers as a method to learn it in a more intuitive way. 
-                                However, he also proposes algorithms that convert the regular expressions (REs) into short-text responses and multiple-choice questions. </p>
-                            <p style="margin-bottom: 5%;">Larson (2018) on the other hand describes how the ACRE (Automatic Checking of Regular Expressions) engine can help flag issues in REs creation with 11 automatic checks. 
-                                Nevertheless, he warns about false alarms and a few expressions that might trigger these.</p>
-                            <p><b>How and why could regex be used as part of a security solution?</b></p>
-                            <p>In the most general cases, regex could be used to filter out unwanted requests preventing injections for instance at API level. 
-                                When trying to tamper the header of an API request, some attacks involve the creation of encoded characters to allow for Booleans that are always true to happen in html format. (Madden, 2020). </p>
-                            <p>Rathnayake and Thielecke (2014) explore how regex might also be used with a complementary tool like RXXR using backtracking to mitigate denial of service (DoS). Alongside with a different author, they expanded on the topic by explaining that this could be achieved through a parser that can transform the regex input into an abstract syntax tree (AST). 
-                                This one, with a series of rules based on complex logic, can filter out suspicious requests (Kirrage, Rathnayake and Thielecke, 2013). </p>
-                        </div>
-                        <button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown2')">Activity: Recursion</button>
-                        <div style="width: 100%" id="dropdown2" class="dropdown-content">
-                            <p>The Tower of Hanoi is the problem we are going to work with. There are 2 internal patterns going on to move the disks. There's the movement of the first disk to the origin pole, and the stacking of the first disk moved on top of the second and then third moved to origin again (loop complete). Here's the proposed solution:</p>
-                        </div>
+							<p>According to IBM (2018), Cyclomatic Complexity was created by Thomas McCabe to determine the stability and level of confidence in a program. It measures the number of independent paths in the program, often called as decision points. The deeper this goes and more branches it has, the more complex the program is said to be.</p>
+							<p>With this introduction, let me gauge the accuracy and relevancy of Cyclomatic Complexity nowadays and whether it still remains valid to test code. Lenarduzzi, Kilamo and Janes (2023), did an empirical study with some background research, comparing Cyclomatic and Cognitive Complexity. The latter, relies on other fundamental laws and in theory is more adaptive than Cyclomatic. 
+								This is because not every decision point should count the same in the complexity scale, as some points are too hard or too easy for humans to understand. Theory supports this with the results they obtained on the test, as Cognitive Complexity yielded more accurate results than Cyclomatic to categorise 12 Java classes with more than 200 students taking the survey.</p>
+							<p>However, on the other hand, Wijendra and Hewagamage (2021) state that Cyclomatic and Cognitive complexity are not related or complementary to each other as the latter is based on statements beyond computability, like human knowledge which is quite subjective.</p>
+							<p>The perfect combination of Cyclomatic and Cognitive is the approach developed in an Object-Oriented Programming (OOP) application in Waweru (2013). In broad terms, his research thesis removes the human knowledge from the Cognitive Complexity but adds different weighing to different components like nesting level, inheritance and control structure.</p>
+							<p>Determining code complexity is essential in the development of software (Newcombe et al., 2015), as the higher the complexity, the higher the risk of costly human and machine errors. This is extremely relevant in the software industry, proof of that is the enhanced Amazon Web Services, Inc. (2020) complexity detection tool Amazon CodeGuru Reviewer.</p>
+							<p>Specific to this module, assessing the complexity of our code will help me scan the proposed system, easing the risk mitigation stages. Furthermore, complexity will have a big impact on testing to adapt the checks and understand the output.</p>
+							<p style="margin-top: 4%;"><b>Team thoughts</b></p>
+							<p>Within my team, there are several opinions as to whether Cyclomatic Complexity still plays a role in industry. However, the resources found by my teammates that support this I found to be slightly outdated. Although some studies still consider this technique valid, there are others that say that despite being useful when developing applications it should not be fully relied upon. 
+								This is also what my background research concluded, with a blended approach between Cyclomatic and Cognitive.</p>
+						</div>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown2')">Python activity: Equivalence Testing in Python</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+							<p>The equivalence testing activity was rather abstract and a fun experiment. The exercise required me to record some results, ideas and to experiment with the provided equivalence code (Stack Overflow, 2016):</p>
+							<pre style="margin-bottom: 0%;">
+								<code>
+def equivalence_partition(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+"""
+classes = []
+partitions = {}
+for o in iterable:  # for each object
+	# find the class it is in
+	found = False
+	for c in classes:
+		if relation(next(iter(c)), o):  # is it equivalent to this class?
+			c.add(o)
+			partitions[o] = c
+			found = True
+			break
+	if not found:  # it is in a new class
+		classes.append(set([o]))
+		partitions[o] = classes[-1]
+return classes, partitions
+
+
+def equivalence_enumeration(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Same as equivalence_partition() but also numbers the classes.
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions, ids
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+	ids: A dictionary mapping objects to the indices of their equivalence classes
+"""
+classes, partitions = equivalence_partition(iterable, relation)
+ids = {}
+for i, c in enumerate(classes):
+	for o in c:
+		ids[o] = i
+return classes, partitions, ids
+
+
+def check_equivalence_partition(classes, partitions, relation):
+"""Checks that a partition is consistent under the relationship"""
+for o, c in partitions.items():
+	for _c in classes:
+		assert (o in _c) ^ (not _c is c)
+for c1 in classes:
+	for o1 in c1:
+		for c2 in classes:
+			for o2 in c2:
+				assert (c1 is c2) ^ (not relation(o1, o2))
+
+
+def test_equivalence_partition():
+relation = lambda x, y: (x - y) % 4 == 0
+classes, partitions = equivalence_partition(
+	range(-3, 5),
+	relation
+)
+check_equivalence_partition(classes, partitions, relation)
+for c in classes: print(c)
+for o, c in partitions.items(): print(o, ':', c)
+
+
+if __name__ == '__main__':
+test_equivalence_partition()
+								</code>
+							</pre>
+							<p><b>First thing I learned:</b></p>
+							<p>After checking and following the code execution, I came accross the assert operator. This one raises an assertion error when yields false, so tests are not passed. This message can be personalized for instances using this simple formatting:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+a = {1, 2, 3, 6}
+
+b = 6
+
+# Print a message
+assert b in a, f"{b} is not in a"								
+								</code>
+							</pre>
+							<p style="margin-bottom: 3%; margin-top: 0%;">This can be used in the testing suite, to check for program execution and very convenient for testing.</p>
+							<p><b>Second thing I learned:</b></p>
+							<p>I found that the equivalence enumeration function did not impact the output, as it does not do any of the printing or classification but just indexing with enumeration the past classes by the first function equivalence partition. This is the function:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+def equivalence_enumeration(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Same as equivalence_partition() but also numbers the classes.
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions, ids
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+	ids: A dictionary mapping objects to the indices of their equivalence classes
+"""
+classes, partitions = equivalence_partition(iterable, relation)
+ids = {}
+for i, c in enumerate(classes):
+	for o in c:
+		ids[o] = i
+return classes, partitions, ids
+								</code>
+							</pre>
+							<p><b>Third thing I learned:</b></p>
+							<p>Functions are what they call them first class objects, as they can be passed as arguments to other functions. However, functions, if not passed with the argument parenthesis are interpreted as objects (Duke.edu, 2024):</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+def function1(f):
+    print(f"{f}")
+
+
+def function2():
+    function3 = lambda x: 3
+    function1(function3("hello"))
+
+
+if __name__ == "__main__":
+    function2()
+
+###OUTPUT: 3###
+								</code>
+							</pre>
+							<p>If we replaced function1function3("hello") by function1(function3) without the parenthesis, the output would be:</p>
+							<p class="center">Output = &lt;function function2.&lt;locals&gt;.&lt;lambda&gt; at 0x10dcf8d60&gt;</p>
+							<p><b>Fourth thing I learned</b></p>
+							<p>I worked on the __next__ and __iterable__ methods for classes that want to be taken as for instance a group of objects and want to pass every object as if it was a list, without saving them in a list. This is how they are built:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+class MyIterable:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0  # Initialize index to keep track of current position
+
+    def __iter__(self):
+        # Return an iterator object
+        return self
+
+    def __next__(self):
+        # Check if the index is within bounds
+        if self.index &lt; len(self.data):
+            # Get the current element and increment the index
+            element = self.data[self.index]
+            self.index += 1
+            return element
+        else:
+            # If index is out of bounds, raise StopIteration
+            raise StopIteration()
+
+
+# Create an instance of MyIterable
+my_iterable = MyIterable([1, 2, 3, 4, 5])
+
+# Iterate over my_iterable using a for loop
+for item in my_iterable:
+    print(item)
+								</code>
+							</pre>
+							<p><b>Fifth and last thing I learned</b></p>
+							<p>With everything I learned, this is my interpretation of the provided equivalence testing code:</p>
+							<pre>
+								<code>
+class mrIteration:
+
+def __init__(self, data):
+	self.index = 0
+	self.content = data
+
+def __iter__(self):
+	return self
+
+def __next__(self):
+	if self.index &lt; len(self.content):
+		element = self.content[self.index]
+		self.index += 1
+		return element
+	else:
+		raise StopIteration
+
+def __getitem__(self, item):
+	return self.content[item]
+
+def pop(self):
+	self.content = self.content[0:len(self.content) - 1]
+	return self.content
+
+
+b = mrIteration([{1}, {2}, {3}])
+
+c = {}
+
+for _ in range(-2, 2):
+if _ &lt; 0:
+	c[_] = b[0]
+elif 0 &lt;= _ &lt; 1:
+	c[_] = b[1]
+elif 1 &lt;= _ &lt; 3:
+	c[_] = b[2]
+
+print(c)								
+								</code>
+							</pre>
+							<p>The output would be a dictionary of the filtered data, something similar to the output of the Stack Overflow (2016) equivalence code:</p>
+							<p class="center">{-2: {1}, -1: {1}, 0: {2}, 1: {3}}</p>
+						</div>
                     </section>
 				</div>
 			</div>
 			<footer id="footer" style="padding-top: 3%;" class="footer">
 				<div class="inner">
 					<h3 class="override">References</h3>
-                    <p>Ade-Ibijola, A. (2018). Synthesis of regular expression problems and solutions. International Journal of Computers and Applications, 42(8), pp.748–764. doi:https://doi.org/10.1080/1206212x.2018.1482398. [Accessed 3 April 2024]</p>
-                    <p>‌Larson, E. (2018). [Research Paper] Automatic Checking of Regular Expressions. doi:https://doi.org/10.1109/scam.2018.00034. [Accessed 4 April 2024]</p>
-                    <p>Wiedman (n.d.). Regular expression Denial of Service - ReDoS | OWASP. [online] Available at: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS. [Accessed 3 April 2024]</p>
-                    <p>Kirrage, J., Rathnayake, A. and Thielecke, H. (2013). Static Analysis for Regular Expression Denial-of-Service Attacks. arXiv (Cornell University). doi:https://doi.org/10.48550/arxiv.1301.0849. [Accessed 4 April 2024]</p>
-                    <p>Madden, N. (2020). Api Security In Action. [Accessed 4 April 2024]</p>
-                    <p>Thielecke, H. and Rathnayake, A., 2014. RXXR2: Regular expression denial of service (REDoS) static analysis. Available at: https://web.archive.org/web/20211027135828/https://www.cs.bham.ac.uk/~hxt/research/rxxr.shtml [Accessed 4 April 2024]</p>
-                </div>
+					<p>IBM (2018). Cyclomatic complexity. [online] Available at: https://www.ibm.com/docs/en/raa/6.1?topic=metrics-cyclomatic-complexity. [Accessed 15 Apr. 2024].</p>
+					<p>Lenarduzzi, V., Kilamo, T. and Janes, A. (2023). Does Cyclomatic or Cognitive Complexity Better Represents Code Understandability? An Empirical Investigation on the Developers Perception. [online] Available at: https://arxiv.org/pdf/2303.07722.pdf [Accessed 13 Apr. 2024].</p>
+					<p>Wijendra, D.R. and Hewagamage, K.P. (2021). Analysis of Cognitive Complexity with Cyclomatic Complexity Metric of Software. International Journal of Computer Applications, 174(19), pp.14–19. doi:https://doi.org/10.5120/ijca2021921066. [Accessed 15 Apr. 2024].</p>
+					<p>Waweru, S.N., Mwangi, W. & Joseph, W. 2013, "A Software Code Complexity Framework; Based on an Empirical Analysis of Software Cognitive Complexity Metrics using an Improved Merged Weighted Complexity Measure", International Journal of Advanced Research in Computer Science, vol. 4, no. 8. [Accessed 15 Apr. 2024].</p>
+					<p>Waweru, S.N. (2013). A Software Code Complexity Framework; Based on an Empirical Analysis of Software Cognitive Complexity Metrics using an Improved Merged Weighted Complexity Measure. [Research Paper] pp.53–57. Available at: https://www.proquest.com/docview/1443764217?accountid=10766&parentSessionId=a2qYRy3NlbtDPtxKyh3UMTQZLQWvF36AC%2B6dyQYtlxs%3D&parentSessionId=xJWeDwwZZ4QFQL1E%2B0HLPtS%2FH19yu2dXNXuLwySdVzw%3D&pq-origsite=primo&sourcetype=Scholarly%20Journals [Accessed 15 Apr. 2024].</p>
+					<p>Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M. and Deardeuff, M. (2015). How Amazon web services uses formal methods. Communications of the ACM, 58(4), pp.66–73. doi:https://doi.org/10.1145/2699417 [Accessed 14 Apr. 2024].</p>
+					<p>Stack Overflow (2016). Is there a standard way to partition an interable into equivalence classes given a relation in python? [online] Available at: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631 [Accessed 6 May 2024].</p>
+					<p>Duke.edu. (2024). Functions are first class objects — Computational Statistics in Python 0.1 documentation. [online] Available at: https://people.duke.edu/~ccc14/sta-663/FunctionsSolutions.html#:~:text=In%20Python%2C%20functions%20behave%20like.</p>
+				</div>
 			</footer>
 		</div>
 		<script src="assets/js/jquery.min.js"></script>
