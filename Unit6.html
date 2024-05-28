@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+			.center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+				width: 100%;
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			section p{
+				margin-bottom: 1.5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<header id="header" style="margin-bottom: 0%;">
+			<div class="inner">
+
+				<!-- Nav -->
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</header>
+		<nav id="menu">
+			<h2>Unit selector</h2>
+			<ul>
+				<li><a href="Unit1.html">Unit 1</a></li>
+				<li><a href="Unit2.html">Unit 2</a></li>
+				<li><a href="Unit3.html">Unit 3</a></li>
+				<li><a href="Unit4.html">Unit 4</a></li>
+				<li><a href="Unit5.html">Unit 5</a></li>
+				<li><a href="Unit6.html">Unit 6</a></li>
+				<li><a href="Unit7.html">Unit 7</a></li>
+				<li><a href="Unit8.html">Unit 8</a></li>
+				<li><a href="Unit9.html">Unit 9</a></li>
+				<li><a href="Unit10.html">Unit 10</a></li>
+				<li><a href="Unit11.html">Unit 11</a></li>
+				<li><a href="Unit12.html">Unit 12</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper" style="margin-top: 0%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 6</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Using Linters to Support Python Testing</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+						<p>During this unit, I spent my time learning and developing a GUI for my system implementation using Tkinter. I know the project requirements set the user interface (UI) to be effectively done via the command line interface (CLI), but wanted the login to look like a real app and then jump into the terminal. It looks very good to me, and really enjoyed working on the front-end for a bit.</p>
+						<p>I implemented a password generator and regex password checker, so it would comply with point 8 on measures to enforce security in software by Saltzer and Schroeder () [INCLUDE REFERENCE!!!]. This point recommend not to rely on user knowledge to implement restrictions, so you really force them down the secure path rather than leave room for decision.</p>
+						<p>I am still to define the system architecture and define how to retain data and pass it to the program while changing it. A server using flask? A text file that acts as a database?</p>
+						<p>The way forward is pretty daunting, but I will try my best to do well.</p>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Seminar Activity: Exploring Linters to Support Testing in Python</button>
+                        <div style="width: 100%" id="dropdown1" class="dropdown-content">
+							<p>This exercise required me to test some of the most famous linter frameworks on a given script.</p>
+							<p><b>Pylint question</b></p>
+							<p>What happens when the code is run? Can you modify this code for a more favourable outcome? What amendments have you made to the code?</p>
+							<p>After installing Pylint, I ran the pylintTest.py script and these were the flagged errors: </p>
+							<figure class="center">
+								<img src="images/pylint1.png" alt="Pylint output">
+								<figcaption style="margin-bottom: 5%;">Fig. 1: Parsing error</figcaption>
+							</figure>
+							<p>After correcting the parsing error, I ran pylint again, and this time so many errors popped up. This was the output: </p>
+							<figure class="center">
+								<img src="images/pylint2.png" alt="Pylint output">
+								<figcaption style="margin-bottom: 5%;">Fig. 2: Pylint errors</figcaption>
+							</figure>
+							<p>After all these changes this is the clean, ordered code with no errors:</p>
+							<pre>
+								<code>
+# SOURCE OF CODE: https://docs.pylint.org/en/1.6.0/tutorial.html
+
+"""This is the docstring"""
+
+import string
+
+SHIFT = 3
+choice = input("would you like to encode or decode?")
+word = input("Please enter text")
+LETTERS = string.ascii_letters + string.punctuation + string.digits
+ENCODED = ''
+if choice == "encode":
+    for letter in word:
+        if letter == ' ':
+            ENCODED += ' '
+        else:
+            X = LETTERS.index(letter) + SHIFT
+            ENCODED = ENCODED + LETTERS[X]
+        if choice == "decode":
+            for letter in word:
+                if letter == ' ':
+                    ENCODED = ENCODED + ' '
+                else:
+                    X = LETTERS.index(letter) - SHIFT
+                    ENCODED = ENCODED + LETTERS[X]
+
+print(ENCODED)
+# End of file
+								</code>
+							</pre>
+						</div>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown2')">Python activity: Equivalence Testing in Python</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+							<p>The equivalence testing activity was rather abstract and a fun experiment. The exercise required me to record some results, ideas and to experiment with the provided equivalence code (Stack Overflow, 2016):</p>
+							<pre style="margin-bottom: 0%;">
+								<code>
+def equivalence_partition(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+"""
+classes = []
+partitions = {}
+for o in iterable:  # for each object
+	# find the class it is in
+	found = False
+	for c in classes:
+		if relation(next(iter(c)), o):  # is it equivalent to this class?
+			c.add(o)
+			partitions[o] = c
+			found = True
+			break
+	if not found:  # it is in a new class
+		classes.append(set([o]))
+		partitions[o] = classes[-1]
+return classes, partitions
+
+
+def equivalence_enumeration(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Same as equivalence_partition() but also numbers the classes.
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions, ids
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+	ids: A dictionary mapping objects to the indices of their equivalence classes
+"""
+classes, partitions = equivalence_partition(iterable, relation)
+ids = {}
+for i, c in enumerate(classes):
+	for o in c:
+		ids[o] = i
+return classes, partitions, ids
+
+
+def check_equivalence_partition(classes, partitions, relation):
+"""Checks that a partition is consistent under the relationship"""
+for o, c in partitions.items():
+	for _c in classes:
+		assert (o in _c) ^ (not _c is c)
+for c1 in classes:
+	for o1 in c1:
+		for c2 in classes:
+			for o2 in c2:
+				assert (c1 is c2) ^ (not relation(o1, o2))
+
+
+def test_equivalence_partition():
+relation = lambda x, y: (x - y) % 4 == 0
+classes, partitions = equivalence_partition(
+	range(-3, 5),
+	relation
+)
+check_equivalence_partition(classes, partitions, relation)
+for c in classes: print(c)
+for o, c in partitions.items(): print(o, ':', c)
+
+
+if __name__ == '__main__':
+test_equivalence_partition()
+								</code>
+							</pre>
+							<p><b>First thing I learned:</b></p>
+							<p>After checking and following the code execution, I came accross the assert operator. This one raises an assertion error when yields false, so tests are not passed. This message can be personalized for instances using this simple formatting:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+a = {1, 2, 3, 6}
+
+b = 6
+
+# Print a message
+assert b in a, f"{b} is not in a"								
+								</code>
+							</pre>
+							<p style="margin-bottom: 3%; margin-top: 0%;">This can be used in the testing suite, to check for program execution and very convenient for testing.</p>
+							<p><b>Second thing I learned:</b></p>
+							<p>I found that the equivalence enumeration function did not impact the output, as it does not do any of the printing or classification but just indexing with enumeration the past classes by the first function equivalence partition. This is the function:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+def equivalence_enumeration(iterable, relation):
+"""Partitions a set of objects into equivalence classes
+
+Same as equivalence_partition() but also numbers the classes.
+
+Args:
+	iterable: collection of objects to be partitioned
+	relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+		if and only if o1 and o2 are equivalent
+
+Returns: classes, partitions, ids
+	classes: A sequence of sets. Each one is an equivalence class
+	partitions: A dictionary mapping objects to equivalence classes
+	ids: A dictionary mapping objects to the indices of their equivalence classes
+"""
+classes, partitions = equivalence_partition(iterable, relation)
+ids = {}
+for i, c in enumerate(classes):
+	for o in c:
+		ids[o] = i
+return classes, partitions, ids
+								</code>
+							</pre>
+							<p><b>Third thing I learned:</b></p>
+							<p>Functions are what they call them first class objects, as they can be passed as arguments to other functions. However, functions, if not passed with the argument parenthesis are interpreted as objects (Duke.edu, 2024):</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+def function1(f):
+    print(f"{f}")
+
+
+def function2():
+    function3 = lambda x: 3
+    function1(function3("hello"))
+
+
+if __name__ == "__main__":
+    function2()
+
+###OUTPUT: 3###
+								</code>
+							</pre>
+							<p>If we replaced function1function3("hello") by function1(function3) without the parenthesis, the output would be:</p>
+							<p class="center">Output = &lt;function function2.&lt;locals&gt;.&lt;lambda&gt; at 0x10dcf8d60&gt;</p>
+							<p><b>Fourth thing I learned</b></p>
+							<p>I worked on the __next__ and __iterable__ methods for classes that want to be taken as for instance a group of objects and want to pass every object as if it was a list, without saving them in a list. This is how they are built:</p>
+							<pre style="margin-top: 0%; margin-bottom: 0%;">
+								<code>
+class MyIterable:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0  # Initialize index to keep track of current position
+
+    def __iter__(self):
+        # Return an iterator object
+        return self
+
+    def __next__(self):
+        # Check if the index is within bounds
+        if self.index &lt; len(self.data):
+            # Get the current element and increment the index
+            element = self.data[self.index]
+            self.index += 1
+            return element
+        else:
+            # If index is out of bounds, raise StopIteration
+            raise StopIteration()
+
+
+# Create an instance of MyIterable
+my_iterable = MyIterable([1, 2, 3, 4, 5])
+
+# Iterate over my_iterable using a for loop
+for item in my_iterable:
+    print(item)
+								</code>
+							</pre>
+							<p><b>Fifth and last thing I learned</b></p>
+							<p>With everything I learned, this is my interpretation of the provided equivalence testing code:</p>
+							<pre>
+								<code>
+class mrIteration:
+
+def __init__(self, data):
+	self.index = 0
+	self.content = data
+
+def __iter__(self):
+	return self
+
+def __next__(self):
+	if self.index &lt; len(self.content):
+		element = self.content[self.index]
+		self.index += 1
+		return element
+	else:
+		raise StopIteration
+
+def __getitem__(self, item):
+	return self.content[item]
+
+def pop(self):
+	self.content = self.content[0:len(self.content) - 1]
+	return self.content
+
+
+b = mrIteration([{1}, {2}, {3}])
+
+c = {}
+
+for _ in range(-2, 2):
+if _ &lt; 0:
+	c[_] = b[0]
+elif 0 &lt;= _ &lt; 1:
+	c[_] = b[1]
+elif 1 &lt;= _ &lt; 3:
+	c[_] = b[2]
+
+print(c)								
+								</code>
+							</pre>
+							<p>The output would be a dictionary of the filtered data, something similar to the output of the Stack Overflow (2016) equivalence code:</p>
+							<p class="center">{-2: {1}, -1: {1}, 0: {2}, 1: {3}}</p>
+						</div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Stack Overflow (2016). Is there a standard way to partition an interable into equivalence classes given a relation in python? [online] Available at: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631 [Accessed 6 May 2024].</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>
