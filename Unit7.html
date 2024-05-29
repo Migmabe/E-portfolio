@@ -75,16 +75,6 @@
 				word-wrap: break-word;
 			}
 
-			.dropdown-content div {
-				margin: auto;
-				width: 60%;
-				border: 8px solid red;
-				padding: 10px;
-				align-items: center;
-				text-align: center;
-        	}
-
-
 		</style>
     </head>
 	<body class="is-preload">
@@ -150,7 +140,7 @@
                         <div style="width: 100%" id="dropdown1" class="dropdown-content">
 							<p>This exercise required me to test some of the most famous linter frameworks on a given script.</p>
 							<p><b>Pylint question</b></p>
-							<p><u>What happens when the code is run? Can you modify this code for a more favourable outcome? What amendments have you made to the code?</u></p>
+							<p>What happens when the code is run? Can you modify this code for a more favourable outcome? What amendments have you made to the code?</p>
 							<p>After installing Pylint, I ran the pylintTest.py script and these were the flagged errors: </p>
 							<figure class="center">
 								<img src="images/pylint1.png" alt="Pylint output">
@@ -164,7 +154,7 @@
 							<p>For the next iteration, these were the prompted changes:</p>
 							<figure class="center">
 								<img src="images/pylint3.png" alt="Pylint output">
-								<figcaption style="margin-bottom: 5%;">Fig. 3: Pylint errors 2</figcaption>
+								<figcaption style="margin-bottom: 5%;">Fig. 2: Pylint errors 2</figcaption>
 							</figure>
 							<p>After all these changes this is the clean, ordered code with no errors:</p>
 							<pre>
@@ -199,138 +189,6 @@ print(ENCODED)
 # End of file
 								</code>
 							</pre>
-							<p><b>Flake 8 question</b></p>
-							<p><u>Review the errors returned. In what way does this error message differ from the error message returned by pylint? Run flake8 on metricTest.py. Can you correct each of the errors returned by flake8? What amendments have you made to the code?</u></p>
-							<p>The first check when passing pylintTest.py through flake 8 is the same error Pylint initially flagged, which was the missing parenthesis in the last print statement, with a different error code:</p>
-							<figure class="center">
-								<img src="images/flake8-1.png" alt="Flake8 output">
-								<figcaption style="margin-bottom: 5%;">Fig. 4: Flake8 SyntaxError</figcaption>
-							</figure>
-							<p>That being corrected, these are the spotted errors:</p>
-							<figure class="center">
-								<img src="images/flake8-2.png" alt="Flake8 output">
-								<figcaption style="margin-bottom: 5%;">Fig. 5: Flake8 errors</figcaption>
-							</figure>
-							<p>There are less corrections than what pylint spotted, and the common mistakes essentially were the wrong indentation inside the if statement, the whitespace at the end of my file and the raw_input variable not being defined. So far, I liked pylint’s consistency a little better, prompting me to create a docstring at the beginning of the file and checking for unnecessary punctuation like double parenthesis.</p>
-							<p>However, and this point probably comes down to personal preference, I found that Pylint has a feature which treats every variable that’s defined outside any other structure (function, class…) as a constant. To some extent it is true, so wants these to be capitalised. 
-								Some people like it and some do not, but in my case it would work fine, as for instance the GUI with TKINTER requires of a few variable constants that are defined at the beginning of the program. Capitalising helps me visualize them in the program.</p>
-							<p>When running flake8 and pylint through metricTest.py, things changed as it flagged errors like SyntaxErrors and IndentationErrors in a one by one approach. I found this rather inconvenient, instead of parsing the complete file, apparently cannot progress if one of these compilation errors (big errors) happen. Correcting the indentation errors helped me see how my Pycharm IDE (JetBrains, 2024) handles this. 
-								I realised it places several bars at the indentation level of every layer to see the different indentation levels better, as well as number of spaces. So if bars were to appear too close to one another, something is likely to be wrong. These were the flagged errors after the indentation correction:</p>
-							<figure class="center">
-								<img src="images/flake8-3.png" alt="Flake8 output">
-								<figcaption style="margin-bottom: 5%;">Fig. 6: Flake8 errors 2</figcaption>
-							</figure>
-							<p>This is the corrected, free of errors code:</p>
-							<pre>
-								<code>
-# CODE SOURCE: SOFTWARE ARCHITECTURE WITH PYTHON
-
-"""
-2 Module metricTest.py
-3
-4 Metric example - Module which is used as a testbed for static
-checkers.
-5 This is a mix of different functions and classes doing
-different things.
-6
-7 """
-import random
-
-
-def fn(x, y):
-    """ A function which performs a sum """
-    return x + y
-
-
-def find_optimal_route_to_my_office_from_home(start_time,
-                                              expected_time,
-                                              favorite_route='SBS1K',
-                                              favorite_option='bus'):
-    d = (expected_time - start_time).total_seconds() / 60.0
-
-    if d &lt= 30:
-        return 'car'
-
-    # If d>30 but &lt45, first drive then take metro
-    if 30 &lt d &lt 45:
-        return 'car', 'metro'
-
-    # If d>45 there are a combination of options
-    # Writing Modifiable and Readable Code
-
-    if d > 45:
-        if d &lt 60:
-            # First volvo,then connecting bus
-            return ('bus:335E', 'bus:connector')
-        elif d > 80:
-            # Might as well go by normal bus
-            return random.choice(('bus:330', 'bus:331', ':'.
-                                  join((favorite_option,
-                                        favorite_route))))
-        elif d > 90:
-            # Relax and choose favorite route
-            return ':'.join((favorite_option, favorite_route))
-
-
-class C(object):
-    """ A class which does almost nothing """
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def f(self):
-        pass
-
-    def g(self, x, y):
-
-        if self.x > x:
-            return self.x + self.y
-        elif x > self.x:
-            return x + self.y
-
-
-class D(C):
-    """ D class """
-
-    def __init__(self, x):
-        self.x = x
-
-    def f(self, x, y):
-        if x > y:
-            return x - y
-        else:
-            return x + y
-
-    def g(self, y):
-
-        if self.x > y:
-            return self.x + y
-        else:
-            return y - self.x
-
-								</code>
-							</pre>
-							<p><b>Mccabe question</b></p>
-							<p><u>Run mccabe on sums.py. What is the result?Run mccabe on sums2.py. What is the result? What are the contributors to the cyclomatic complexity in each piece of code?</u></p>
-							<p>In mccabe’s section, I struggled to get the mccabe’s library to work, and I managed to find an alternative solution which is Radon (Lacchia, 2023). The “radon cc” tool also performs Cyclomatic Complexity statically in the code. This is how the prompts are built:</p>
-							<p style="text-align: center;"><em>radon cc sums.py</em></p>
-							<p>For the first script, sums.py, the complexity was categorised as simple (rank A). The F at the beginning of the statement suggests that at row 4 column 0 of our script, a function is being evaluated:</p>
-							<div class="align_center">
-								<p><b style="color: black; font-size: xx-large;"><span style="color: purple;">F</span> 4:0 test_sum - <span style="color: green;">A (2)</span></b></p>
-							</div>
-							<figcaption style="margin-bottom: 5%; text-align: center;">Fig. 7: Mccabe operation 1</figcaption>
-							<p>For the second script, sums2.py, the same score is achieved in both of its functions, as it is exactly the same operation, with rank A (2):</p>
-							<div class="align_center">
-								<p><b style="color: black; font-size: xx-large;"><span style="color: purple;">F</span> 4:0 test_sum - <span style="color: green;">A (2)</span></b></p>
-								<p><b style="color: black; font-size: xx-large;"><span style="color: purple;">F</span> 7:0 test_sum_tuple - <span style="color: green;">A (2)</span></b></p>
-							</div>
-							<figcaption style="margin-bottom: 5%; text-align: center;">Fig. 8: Mccabe operation 2</figcaption>
-							<p>The rank thresholds are the following:</p>
-							<figure class="center">
-								<img src="images/mccabe_ranks.png" alt="Mccabe Ranks">
-								<figcaption style="margin-bottom: 5%;">Fig. 9: Lacchia (2020)</figcaption>
-							</figure>
 						</div>
                     </section>
 				</div>
@@ -339,7 +197,6 @@ class D(C):
 				<div class="inner">
 					<h3 class="override">References</h3>
 					<p>Stack Overflow (2016). Is there a standard way to partition an interable into equivalence classes given a relation in python? [online] Available at: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631 [Accessed 6 May 2024].</p>
-					<p>Lacchia, M. (2023). radon: Code Metrics in Python. [online] PyPI. Available at: https://pypi.org/project/radon/ [Accessed 6 May 2024].</p>
 				</div>
 			</footer>
 		</div>
