@@ -44,10 +44,6 @@
 				margin-bottom: 1%;
 			}
 
-			.mine ul li:before{
-				content: "- ";
-			}
-
 			.mine p{
 				margin-bottom: 2%;
 			}
@@ -496,7 +492,7 @@
 								</blockquote>
 							</section>
 							<hr />
-							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown4')">Collaborative discussions</button>
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown4')">Collaborative discussion 1</button>
 							<section style="width: 100%" id="dropdown4" class="dropdown-content">
 								<table>
 									<tr style="border: 1px solid black;">
@@ -520,7 +516,7 @@
 								<table style="width: 90%; margin-left: 10%;">
 									<tr style="border: 1px solid black;" class="blog">
 										<td>
-											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 1 – Reply</h4>
 											<p style="font-size: small;">by Mario</p>
 											<p>Hi Miguel,</p>
 											<p>Thank you for sharing your knowledge on the subject of broken access control.</p>
@@ -537,7 +533,7 @@
 								<table style="width: 90%; margin-left: 10%;">
 									<tr style="border: 1px solid black;" class="blog">
 										<td>
-											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 1 – Reply</h4>
 											<p style="font-size: small;">by Samuel</p>
 											<p>Hi Miguel,</p>
 											<p>Thank you for providing your thoughts on what broken access control is and how to prevent it. I found it to be rather informative.</p>
@@ -562,16 +558,16 @@
 								</table>
 								<table>
 									<tr style="border: 1px solid black;">
-										<td class="mine">
+										<td>
 											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion Summary – Broken access control</h4>
 											<p style="font-size: small;">by Miguel Maide Bezares</p>
 											<p style="margin-top: 1%; margin-bottom: 1%;">Hi everyone, thank you for logging some responses and the constructive feedback. I have made some changes to the initial discussion, as I agree with many of the points you raised.</p>
 											<p style="margin-top: 1%; margin-bottom: 2%;">Firstly, I added titles to the UML diagrams so they are clearly labelled and easier to follow, as well as thickening the swim lanes as many lines were crossing others, to better divide the different systems involved in performing the request. The right-side diagram was changed, I added one more lane, as the multi-factor authentication (MFA) should be a process on its own. Grimes (2021) made a book on MFA hacking and many of the implementations were taken from his piece. </p>
-											<ul>
-												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">If the user was active in the Identity Management system (IDM), the MFA could open a request to process a one-time password (OTP).</li>
-												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">If the OTP requests exceed 2, the system will block the request and notify ADMIN and USER. OTP generation on its own is a complicated and extensive process, with several methodologies presented in Grimes (2021). The most used ones are hashed (HOTP) and time-based (TOTP).</li>
-												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">Added an extra-level of security in-APP level, where the user signature is hashed, so that this prevents malicious users from impersonating this user by stealing their data. Hashing assigns the password a set-length key of characters (special, binary, ASCII). The app would compare both initial and final hashed keys, to avoid any tampering.</li>
-												<li style="list-style-type: none; padding-left: 0%; margin-bottom: 1%;">As a minor change, the UML now shows the correct login count block in the APP lane.</li>
+											<ul style="margin-left: 4%;">
+												<li style="list-style-type: none; margin-bottom: 1%;">- If the user was active in the Identity Management system (IDM), the MFA could open a request to process a one-time password (OTP).</li>
+												<li style="list-style-type: none; margin-bottom: 1%;">- If the OTP requests exceed 2, the system will block the request and notify ADMIN and USER. OTP generation on its own is a complicated and extensive process, with several methodologies presented in Grimes (2021). The most used ones are hashed (HOTP) and time-based (TOTP).</li>
+												<li style="list-style-type: none; margin-bottom: 1%;">- Added an extra-level of security in-APP level, where the user signature is hashed, so that this prevents malicious users from impersonating this user by stealing their data. Hashing assigns the password a set-length key of characters (special, binary, ASCII). The app would compare both initial and final hashed keys, to avoid any tampering.</li>
+												<li style="list-style-type: none; margin-bottom: 1%;">- As a minor change, the UML now shows the correct login count block in the APP lane.</li>
 											</ul>
 											<p style="margin-top: 1%; margin-bottom: 1%;">Despite all the techniques used to make OTP generation secure, OTP codes can still be subject to tampering and hijacking. The introduction of quantum computers would improve this substantially, due to the physical characteristics of the quantum particles, with an unprecedented level of randomness (Zhou, Stoudenmire and Waintal, 2020).</p>
 											<p style="margin-top: 1%; margin-bottom: 1%;">There are other external techniques to prevent hijacking of the APP, by limiting the privileges given to the users accessing it, like the Principle of Least Privilege (Maric, 2023) or cloud role access control like Amazon (2024) AWS.</p>
@@ -581,6 +577,99 @@
 											<p style="margin-bottom: 1%;">Grimes, R.A. (2021). Hacking multifactor authentication. [online] Indianapolis, In: John Wiley & Sons, Inc. Available at: https://learning.oreilly.com/library/view/hacking-multifactor-authentication/9781119650799/ [Accessed 30 March 2024].</p>
 											<p style="margin-bottom: 1%;">Maric, N. (2023) Broken Access Control: Attack Examples and 4 Defensive Measures. December 29, 2023. Available from https://brightsec.com/blog/broken-access-control-attack-examples-and-4-defensive-measures/#:~:text=Implementing%20the%20Principle%20of%20Least%20Privilege,-The%20Principle%20of&text=The%20principle%20is%20used%20to,system%20or%20accessing%20confidential%20information [Accessed 1 April 2024]</p>
 											<p style="margin-bottom: 1%;">Amazon (2024) AWS Identity and Access Management. Available from: https://aws.amazon.com/iam/ [Accessed 1 April 2024]</p>
+										</td>
+									</tr>
+								</table>
+							</section>	
+							<hr />
+							<button class="button primary" style="width: 100%; margin-bottom: 2%;" onclick="toggleDropdown('dropdown8')">Collaborative discussion 2</button>
+							<section style="width: 100%" id="dropdown8" class="dropdown-content">
+								<table>
+									<tr style="border: 1px solid black;">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 - Cryptography case study: TrueCrypt</h4>
+											<p style="font-size: small;">by Miguel Maide Bezares</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">TrueCrypt was discontinued in 2014 after its authors recommended using more robust solutions than their own, for example BitLocker TrueCrypt (2014).</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">Junestam and Guigo (2014) are software security engineers and completed an assessment to determine if TrueCrypt was insecure as officially alleged. In summary, they found several medium and low severity issues which can impact user’s information leading to financial impact, affect reputation or even lead to possible legal implications. Overall, they describe TrueCrypt as a piece of software that has not followed secure software practices, for instance, compiler warnings are suppressed even though some of these should be addressed. 
+												It also lacks protection against offline brute force attacks, given GPU and CPU speeds got faster, with a high chance of exposing encrypted keys.  Some of the issues also lie on poor modelling of the software, with inconsistent integer use which can lead to overflow, and poor kernel handling exposing pointers and not properly clearing sensitive data.</p>
+											<p style="margin-top: 1%; margin-bottom: 1%;">To propose a real-case scenario, something like encrypting a USB-drive. Issues:</p>
+											<ol style="margin-left: 5%;">
+												<li style="padding-left: 0%; margin-bottom: 1%;">Encrypt the USB content with a key, however have access broken to this key with modern GPU-CPU power is not very complex.</li>
+												<li style="padding-left: 0%; margin-bottom: 1%;">Integer mismatches in the code (signed and unsigned) may give an attacker access to executing code on your USB drive, tampering or deleting your data.</li>
+												<li style="padding-left: 0%; margin-bottom: 1%;">This one can be rather unusual, but if during the encryption operation the USB is plugged off, a function called EncryptDataUnits() which does not return anything as it is always expected to succeed, may write unencrypted data to the USB. </li>
+											</ol>
+											<p>In summary, TrueCrypt was not proved safe with only 1000-2000 key deriving cycles, 100 times less than BitLocker (Agostini and Bernaschi, 2022), therefore, I would not recommend this outdated software provided there are other more up-to-date solutions. 
+												Junestam and Guigo (2014) also state that the learning curve for people that want to start contributing and improving TrueCrypt is getting steeper and steeper due to the lack of standards.</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p style="margin-bottom: 1%;">TrueCrypt (2014). TrueCrypt. [online] Available at: https://truecrypt.sourceforge.net [Accessed 2 May 2024].</p>
+											<p style="margin-bottom: 1%;">Junestam, A. & Guigo, N. (2014). Open Crypto Audit Project TrueCrypt - Security Assessment. Available from: https://opencryptoaudit.org/reports/iSec_Final_Open_Crypto_Audit_Project_TrueCrypt_Security_Assessment.pdf [Accessed 2 May 2024].</p>
+											<p style="margin-bottom: 1%;">‌Agostini, E. and Bernaschi, M. (2022). BitCracker: BitLocker meets GPUs. International Journal of Information Security. doi:https://doi.org/10.1007/s10207-022-00589-4 [Accessed 2 May 2024].</p>
+										</td>
+									</tr>
+								</table>
+								<table style="width: 90%; margin-left: 10%;">
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<p style="font-size: small;">by Cathryn</p>
+											<p>Thank you, Miguel.</p>
+											<p>Can you capture the TrueCrypt weaknesses in an ontology?</p>
+											<p>Best wishes,</p>
+											<p>Cathryn</p>
+										</td>
+									</tr>
+								</table>
+								<table style="width: 90%; margin-left: 10%;">
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<p style="font-size: small;">by Patricia</p>
+											<p>Hi Miguel,</p>
+											<p>Thank you for sharing your thoughts about TrueCrypt. I am looking forward to seeing how you will present the ontology of the TrueCrypt weaknesses according to their severity.</p>
+											<p>I do agree with you that TrueCrypt is now an outdated software. Alsmadi (2020) informs us that they are not supported anymore in the more recent operating system versions of Linux, Mac, and Windows. Therefore, at present, we should consider other encryption tools that meet the security standards and needs of today.</p>
+											<p>One of these alternatives include VeraCrypt, where encryption and decryption takes longer due to the additional 30 variations of encryptions (Alsmadi, 2020). Another is BestCrypt, which Sassani (Sarrafpour) et al. (2020) describes as somewhat similar to TrueCrypt, as they can handle Serpent, Advanced Encryption Standard (AES), and Twofish 256-bit algorithms. They also state that it can keep data in repositories that resemble fixed disks.</p>
+											<p>The encryption tool you recommended, BitLocker, is compatible with the latest release of Windows and calculates multitudes of AES and SHA-256 during decryption (Agostini & Bernaschi, 2022). In my opinion, it is an alternative worth looking further into.</p>
+											<p>Kind regards,</p>
+											<p>Patricia</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p>Agostini, E. & Bernaschi, M. (2022). BitCracker: BitLocker meets GPUs. International Journal of Information Security 21: 1005-1018. DOI: https://doi.org/10.1007/s10207-022-00589-4.</p>
+											<p>Alsmadi, I. (2020)  ‘Software Management’, in The NICE Cyber Security Framework. Springer. DOI: https://doi.org/10.1007/978-3-030-41987-5_7.</p>
+											<p>Sassani (Sarrafpour), B.A., Alkorbi, M., Jamil, N., Asif Naeem, M. & Mirza, F. (2020) Evaluating Encryption Algorithms for Sensitive Data Using Different Storage Devices. Scientific Programming 2020 (6132312): 1-9. DOI: https://doi.org/10.1155/2020/6132312.</p>
+										</td>
+									</tr>
+								</table>
+								<table style="width: 90%; margin-left: 10%;">
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion 2 – Reply</h4>
+											<p style="font-size: small;">by Mario</p>
+											<p>Hi Miguel,</p>
+											<p>A very informative post with clear explanations on how to break a TrueCrypt encrypted USB drive.</p>
+											<p>I concur with your assertion that TrueCrypt is not secure and should not be used anymore. A better, more secure option is BitLocker, which utilises Secure Shell Algorithm (SHA-256) and Advanced Encryption Standard (AES) (Agostini and Bernaschi, 2022).</p>
+											<p>If you wish to expand your post, I recommend creating an ontology diagram to present the vulnerabilities and their severities in a structured way. A visual representation would categorise the weaknesses and provide a clearer view of TrueCrypt’s flaws.</p>
+											<p>Thanks,</p>
+											<p>Mario</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p>Agostini, E. and Bernaschi, M. (2022). BitCracker: BitLocker meets GPUs. International Journal of Information Security, [online] 21. doi:https://doi.org/10.1007/s10207-022-00589-4.</p>
+										</td>
+									</tr>
+								</table>
+								<table>
+									<tr style="border: 1px solid black;" class="blog">
+										<td>
+											<h4 style="text-decoration: underline; margin-bottom: auto;">Discussion Summary – Cryptography case study: TrueCrypt</h4>
+											<p style="font-size: small;">by Miguel Maide Bezares</p>
+											<p>Thank you everyone for the feedback, much appreciated. In this final post I will present the ontology diagram, where I divided the main issues and specific modules that trigger them into two main categories, by severity and difficulty. I also included the previously presented USB encryption case, linking the different issues that can arise with their cause.</p>
+											<img style="width: 100%;"src="images/ontology.png" alt="Ontology diagram">
+											<p>Everyone deemed that TrueCrypt is no longer a safe option for encrypting your system, but rather other options like Bitlocker. On this, I would like to expand the reference made in the initial post, as there are devices called Trusted Platform Model (TPM) for extra security. These store and encrypt the Bitlocker keys with its own private key injected in manufacturing (Turner, 2023). In the newer processors, this one is usually integrated, however care must be taken as Bichara de Assumpção et al. (2023) found a way to break into the TPM. Other alternatives to look further into are VeraCrypt and BestCrypt, the former solved TrueCrypt’s issues and can mount the a TrueCrypt volume. 
+												One of the disadvantages is that takes more time to decrypt due to its enhancements and it is still subject to bugs and zero-day exploits like any software (PrivacyRise™ 2023). BestCrypt on the other hand supports the main encryption algorithms like AES and Twofish, but a combination of the two like other solutions provide. Olsson (2012) concluded it being 28% slower than TrueCrypt in terms of encryption, although more secure.</p>
+											<p>To wrap up, Bitlocker would be deemed as the most efficient option for the standard user, as the other options are either slower or less solid with weaker encryption algorithms. For a more comprehensive security coverage, Sharma, Dangi and Mishra (2021) propose other encryption solutions like encrypted internet traffic, files or email.</p>
+											<h4 style="text-decoration: underline; margin-top: 2%;">References</h4>
+											<p>Turner, J. (2023). TPM Key Attestation. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation [Accessed 13 May 2024].</p>
+											<p>Bichara de Assumpção, M., Reis, M.A. dos, Marcondes, M.R., Eleutério, P.M. da S. and Vieira, V.H. (2023). Forensic method for decrypting TPM-protected BitLocker volumes using Intel DCI. Forensic Science International: Digital Investigation, 44, p.301514. doi:https://doi.org/10.1016/j.fsidi.2023.301514. [Accessed 12 May 2024].</p>
+											<p>PrivacyRise™  (2023). VeraCrypt: A Tool for Enhanced Data Security. [online] Available at: https://www.linkedin.com/pulse/veracrypt-tool-enhanced-data-security-privacyrise-bgvbf/. [Accessed 12 May 2024].</p>
+											<p>Sharma, R., Dangi, S. and Mishra, P. (2021). A Comprehensive Review on Encryption based Open Source Cyber Security Tools. 2021 6th International Conference on Signal Processing, Computing and Control (ISPCC). doi:https://doi.org/10.1109/ispcc53510.2021.9609369. [Accessed 17 May 2024].</p>
+											<p>Olsson, R. (2012). Performance differences in encryption software versus storage devices. [Examensarbete] Available at: https://www.diva-portal.org/smash/get/diva2:535985/FULLTEXT01.pdf [Accessed 17 May 2024].</p>
 										</td>
 									</tr>
 								</table>
