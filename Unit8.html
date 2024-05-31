@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+			.center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+				width: 100%;
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			section p{
+				margin-bottom: 1.5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<header id="header" style="margin-bottom: 0%;">
+			<div class="inner">
+
+				<!-- Nav -->
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</header>
+		<nav id="menu">
+			<h2>Unit selector</h2>
+			<ul>
+				<li><a href="Unit1.html">Unit 1</a></li>
+				<li><a href="Unit2.html">Unit 2</a></li>
+				<li><a href="Unit3.html">Unit 3</a></li>
+				<li><a href="Unit4.html">Unit 4</a></li>
+				<li><a href="Unit5.html">Unit 5</a></li>
+				<li><a href="Unit6.html">Unit 6</a></li>
+				<li><a href="Unit7.html">Unit 7</a></li>
+				<li><a href="Unit8.html">Unit 8</a></li>
+				<li><a href="Unit9.html">Unit 9</a></li>
+				<li><a href="Unit10.html">Unit 10</a></li>
+				<li><a href="Unit11.html">Unit 11</a></li>
+				<li><a href="Unit12.html">Unit 12</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper" style="margin-top: 0%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 8</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Cryptography and Its Use in Operating Systems</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+						<p>The countdown has officially started. I have a rough idea as for system architecture and all the individual features I will develop. The system will be a server-client architecture with a flask-deployed server and API module that simulates a real API sending requests over HTML format to the RESTful backend. 
+							I will start developing the encryption algorithm, given the cryptography task put together for this week. The system will allow users to be divided into two credential types with a different set of allowed operations and interactions with the system. These will be “user” and “admin” access.</p>
+						<p>For this week, I participated in the forum to answer the question whether TrueCrypt was a safe application to use to encrypt your system, and initially seemed not to be. I will build on this topic on the next two weeks.</p>
+						<p>Personally a challenging month ahead, as will try to complement my full-time working schedule with the demanding development of this application. I am a little nervous as to how I am going to handle the pressure to deliver and workload.</p>
+						<p>Let’s go!</p>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Seminar Activity: Cryptography Programming Exercise</button>
+						<div style="width: 100%" id="dropdown1" class="dropdown-content">
+							<p>So for this activity, and this is the encryption algorithm I will probably put in place in my system implementation, I used a monoalphabetic cipher. This one will generate a key which will be different every time the algorithm is used and an encrypted message. 
+								The communication between my server and the main application will be symmetrically encrypted. I found this method effective and sufficient for my application, as asymmetric is more computationally demanding and the ISS resources are rather limited.</p>
+							<p>This is the proposed algorithm by Tutorials Point India Private Limited (n.d.):</p>
+							<pre>
+								<code>
+from string import ascii_letters, digits
+from random import shuffle
+
+
+def random_monoalpha_cipher(pool=None):
+    if pool is None:
+        pool = ascii_letters + digits
+    original_pool = list(pool)
+    shuffled_pool = list(pool)
+    shuffle(shuffled_pool)
+    return dict(zip(original_pool, shuffled_pool))
+
+
+def inverse_monoalpha_cipher(monoalpha_cipher):
+    inverse_monoalpha = {}
+    for key, value in monoalpha_cipher.items():
+        inverse_monoalpha[value] = key
+    return inverse_monoalpha
+
+
+def encrypt_with_monoalpha(message, monoalpha_cipher):
+    encrypted_message = []
+    for letter in message:
+        encrypted_message.append(monoalpha_cipher.get(letter, letter))
+    return ''.join(encrypted_message)
+
+
+def decrypt_with_monoalpha(encrypted_message, monoalpha_cipher):
+    return encrypt_with_monoalpha(
+        encrypted_message,
+        inverse_monoalpha_cipher(monoalpha_cipher)
+    )
+
+
+if __name__ == "__main__":
+    key = random_monoalpha_cipher()
+    message = input("What do you want to encrypt?")
+    encrypted_message = encrypt_with_monoalpha(message, key)
+    print(encrypted_message)
+    print(decrypt_with_monoalpha(encrypted_message, key))
+
+								</code>
+							</pre>
+							<p>The key will essentially be a dictionary with their paired equivalent and the message encoded according to that key. This same key will be reversed and used in the decoding.</p>
+							<p>Alongside hashing, cryptography will help the application adhere to GDPR standards by protecting the user’s information from malicious users and preventing tampering. The application will also let users delete their account data any time they want to.</p>
+						</div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Tutorials Point India Private Limited, (n.d.). Cryptography with Python - Quick Guide - Tutorialspoint. [online] Available at: https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_quick_guide.htm. [Accessed 9 May 2024]</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>

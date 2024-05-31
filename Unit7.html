@@ -113,7 +113,7 @@
 					<table class="table-custom">
 						<tr>
 							<td>
-								<h1>Unit 6</h1>
+								<h1>Unit 7</h1>
 							</td>
 							<td style="text-align: right;">
 								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
@@ -121,72 +121,89 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<h2>Using Linters to Support Python Testing</h2>
+								<h2>Introduction to Operating Systems</h2>
 							</td>
 						</tr>
 					</table>
 					<section>
 						<h3 class="override">Short reflection</h3>
-						<p>During this unit, I spent my time learning and developing a GUI for my system implementation using Tkinter. I know the project requirements set the user interface (UI) to be effectively done via the command line interface (CLI), but wanted the login to look like a real app and then jump into the terminal. It looks very good to me, and really enjoyed working on the front-end for a bit.</p>
-						<p>I implemented a password generator and regex password checker, so it would comply with point 8 on measures to enforce security in software by Saltzer and Schroeder () [INCLUDE REFERENCE!!!]. This point recommend not to rely on user knowledge to implement restrictions, so you really force them down the secure path rather than leave room for decision.</p>
-						<p>I am still to define the system architecture and define how to retain data and pass it to the program while changing it. A server using flask? A text file that acts as a database?</p>
-						<p>Our group submitted the design document this week, we are very happy with the result, and it has been really good working with my classmates.</p>
-						<p>The way forward is pretty daunting, but I will try my best to do well.</p>
+						<p>During this unit I developed a very simple shell script in Python. Shell can be used to efficiently run tests in my program and record the data. Is it the expected output? Is it not? I found the lecturecast very interesting as well, as it gives a well-rounded approach to computer operating systems. I am starting to match the dots and understand how everything interacts with other parts of the system. Moreover, I did not know what front and back-end were, and now, after working with shell I start to understand. 
+							Shell would be the front-end, what the user sees and interacts with, and all the system and file management, operations and capability of the system is done for example using Flask in the back-end. </p>
+						<p>Flask is a standard framework to develop applications so we do not have to reinvent the wheel, but use what already was made available to us. I will be trying to implement a server to store my data there and a text file as a database. Everything seems to be working out; so far.</p>
 					</section>
 					<hr>
 					<section>
 						<h3 class="override">Unit activities</h3>
-                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Seminar Activity: Exploring Linters to Support Testing in Python</button>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">What is an Ontology?</button>
                         <div style="width: 100%" id="dropdown1" class="dropdown-content">
-							<p>This exercise required me to test some of the most famous linter frameworks on a given script.</p>
-							<p><b>Pylint question</b></p>
-							<p>What happens when the code is run? Can you modify this code for a more favourable outcome? What amendments have you made to the code?</p>
-							<p>After installing Pylint, I ran the pylintTest.py script and these were the flagged errors: </p>
-							<figure class="center">
-								<img src="images/pylint1.png" alt="Pylint output">
-								<figcaption style="margin-bottom: 5%;">Fig. 1: Parsing error</figcaption>
-							</figure>
-							<p>After correcting the parsing error, I ran pylint again, and this time so many errors popped up. This was the output: </p>
-							<figure class="center">
-								<img src="images/pylint2.png" alt="Pylint output">
-								<figcaption style="margin-bottom: 5%;">Fig. 2: Pylint errors</figcaption>
-							</figure>
-							<p>For the next iteration, these were the prompted changes:</p>
-							<figure class="center">
-								<img src="images/pylint3.png" alt="Pylint output">
-								<figcaption style="margin-bottom: 5%;">Fig. 2: Pylint errors 2</figcaption>
-							</figure>
-							<p>After all these changes this is the clean, ordered code with no errors:</p>
+							<p>Ontology comes across as a rather abstract and complex topic to grasp. In metaphysics, is a branch in philosophy that studies existence and reality (Hoffman and Kumar, 2020). This topic is very big, so ontology “breaks it down” into smaller parts and proposes a set of rules to study reality.</p>
+							<p>In computer science, ontology translates to the explanation of the context of a domain. This can be a business architecture, web data exchange… but in a machine understandable and human-readable format. There are standards as to how we define, entities, classes, relationships in these domains, and we created some languages to represent ontologies. The different components of the defined area have a human-readable description and an axiom to limit interpretation (Gruber, 1993).</p>
+							<p>Now, with this introduction, the paper by Arnaut, Oliveira and Lima (2010), collates two of the main ontology languages used in industry into a Service Oriented Architecture (SOA). So far, this technology was mainly used in organising repositories, but in this paper is applied with a twist as they propose a way to track the registering of the service itself in the SOA. Services which are scalable and independent to one another, and composed of artifacts (Requirements, Design, Implementation and Test).</p>
+							<p>In my ISS system implementation, ontology can be simply put into practice by defining the domain where the classes are used and what interface I will be defining for the different components of my system to seamlessly interact with one another. Every module in the system will be formally described with a statement as to what input it takes, the output and what its functionality is (Paul and Ghosh, 2006). Therefore, ontology can be used to define these exactly, a set of constraints for input-output and the required testing strategy to achieve that.</p>
+						</div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown2')">Exploring a simple Python shell</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+							<p>This is the proposed code that will achieve the ADD, LIST, EXIT and help. The latter is a built-in method from the cmd module:</p>
 							<pre>
 								<code>
-# SOURCE OF CODE: https://docs.pylint.org/en/1.6.0/tutorial.html
+from cmd import Cmd
+import os
 
-"""This is the docstring"""
+class Prompt(Cmd):
 
-import string
+    intro = "Welcome! Let's do some operations. Enter 'help' to display the available commands"
+    prompt = ">>"
 
-SHIFT = 3
-choice = input("would you like to encode or decode?")
-word = input("Please enter text")
-LETTERS = string.ascii_letters + string.punctuation + string.digits
-ENCODED = ''
-if choice == "encode":
-    for letter in word:
-        if letter == ' ':
-            ENCODED += ' '
+    os.system(f"chmod 740 ")
+
+    def do_LISTS(self, arg):
+        """Display current directory content."""
+        content = os.listdir()
+        for n in content:
+            #   Protect my files with the chmod command to avoid tampering
+            os.system(f"chmod 740 {n}")
+            print(n)
+
+    def do_EXIT(self, arg):
+        """Exit the application"""
+        print("Bye")
+        return True
+
+    def do_ADD(self, args):
+        """Adds numbers. Please enter them with a space in between"""
+        n = 0
+        for _ in args.split():
+            n += int(_)
+        print(n)
+
+Prompt().cmdloop()
+print("Shell exited")
+								</code>
+							</pre>
+							<p><b>Main Security Vulnerabilities with my shell and recommendation to increase its security:</b></p>
+							<p>The main one is exposing the directory contents, so the attacker could try access and tamper these if the input is not properly validated. However my code protects the files in the directory by running a “chmod 740” command through every file. This protects the file like this:</p>
+							<ul style="margin-left: 4%;">
+								<li>User: read, write and execute</li>
+								<li>Group: read </li>
+								<li>Others: none</li>
+							</ul>
+							<p>This leads to the other concern which is mainly injection. Every time we accept user input, we must assert its correctness, for instance when calling the ADD method, they could craft input that tries deleting a file in the terminal. However we could clean it by ensuring the right formatting of the input. In this case, I am forcing the input to be converted to integer.</p>
+							<p><b>Pseudocode with the security implementations</b></p>
+							<pre>
+								<code>
+class Prompt(pass Cmd module):
+
+    def print_directories(self, input):
+        if input.isstring() is None:
+            """Run function as normal"""
         else:
-            X = LETTERS.index(letter) + SHIFT
-            ENCODED = ENCODED + LETTERS[X]
-        if choice == "decode":
-            for letter in word:
-                if letter == ' ':
-                    ENCODED = ENCODED + ' '
-                else:
-                    X = LETTERS.index(letter) - SHIFT
-                    ENCODED = ENCODED + LETTERS[X]
+            raise Exception("No input expected")
 
-print(ENCODED)
-# End of file
+    def add_numbers(self, input):
+        if input.isstring():
+            """Run function as normal"""
+        else:
+            raise Exception("Please enter string")
 								</code>
 							</pre>
 						</div>
@@ -196,7 +213,10 @@ print(ENCODED)
 			<footer id="footer" style="padding-top: 3%;" class="footer">
 				<div class="inner">
 					<h3 class="override">References</h3>
-					<p>Stack Overflow (2016). Is there a standard way to partition an interable into equivalence classes given a relation in python? [online] Available at: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631 [Accessed 6 May 2024].</p>
+					<p>Hoffman, S.G. and Kumar, V. (2020). Ontology. [online] Available at: https://doi.org/10.4135/9781526421036869920 [Accessed 24 Apr. 2024].</p>
+					<p>Gruber, T.R. (1993). A translation approach to portable ontology specifications. Knowledge Acquisition, [online] 5(2), pp.199–220. doi:https://doi.org/10.1006/knac.1993.1008. [Accessed 24 Apr. 2024].</p>
+					<p>Arnaut, W., Oliveira, K. and Lima, F. (2010). OWL-SOA: A service oriented architecture ontology useful during development time and independent from implementation technology. 2010 Fourth International Conference on Research Challenges in Information Science (RCIS). doi:https://doi.org/10.1109/rcis.2010.5507314 [Accessed 24 Apr. 2024].</p>
+					<p>Paul, M. and Ghosh, S.K. (2006). An approach for service oriented discovery and retrieval of spatial data. doi:https://doi.org/10.1145/1138486.1138505 [Accessed 24 Apr. 2024].</p>
 				</div>
 			</footer>
 		</div>
