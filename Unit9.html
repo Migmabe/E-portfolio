@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+			.center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+				width: 100%;
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			section p{
+				margin-bottom: 1.5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<header id="header" style="margin-bottom: 0%;">
+			<div class="inner">
+
+				<!-- Nav -->
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</header>
+		<nav id="menu">
+			<h2>Unit selector</h2>
+			<ul>
+				<li><a href="Unit1.html">Unit 1</a></li>
+				<li><a href="Unit2.html">Unit 2</a></li>
+				<li><a href="Unit3.html">Unit 3</a></li>
+				<li><a href="Unit4.html">Unit 4</a></li>
+				<li><a href="Unit5.html">Unit 5</a></li>
+				<li><a href="Unit6.html">Unit 6</a></li>
+				<li><a href="Unit7.html">Unit 7</a></li>
+				<li><a href="Unit8.html">Unit 8</a></li>
+				<li><a href="Unit9.html">Unit 9</a></li>
+				<li><a href="Unit10.html">Unit 10</a></li>
+				<li><a href="Unit11.html">Unit 11</a></li>
+				<li><a href="Unit12.html">Unit 12</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper" style="margin-top: 0%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 9</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Developing an API for a Distributed Environment</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+						<p>Great progress was done on the system implementation, the server main structure was finished, still to implement the security ON and OFF feature. The database architecture that I selected is the object relational mapping (ORM) with sqlalchemy. I chose this one as the queries are parametrized, so injection will be avoided. There are a few bits that I am still to figure out, like filtering the API requests out with keys in the header and implement the system logons. The user interface in the CLI is not done, but I would like to have the working backend ready and then connect it to the frontend.</p>
+						<p>I wrote a few peer responses on this unit’s discussion about Truecrypt’s security, my classmates also concluded that this service is no longer a safe option. Other options were laid out, like VeraCrypt or Bitlocker, so will need to expand on these and check if they are actually safer.</p>
+						<p>Last week was pretty intense, and I felt down many times. I was slightly overwhelmed by all the coding that had to be done, as many of the modules that I wanted to include were not done or even started. Getting done with the server was a pretty big relief, now time to keep pushing. My e-portfolio activities were halted as I could not make time to do both coding the system implementation and the research activities.</p>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Seminar Activity: Cryptography Programming Exercise</button>
+						<div style="width: 100%" id="dropdown1" class="dropdown-content">
+							<p style="margin-top: 4%;"><b>Run the API.py code. Take a screenshot of the terminal output. What command did you use to compile and run the code?</b></p>
+							<p>I am using a Python 3 build on a MacOS system. To run this file on the terminal, I had to cd my way to the current directory, and then name my file. I named it api.py. This is the command I used to run the Flask server on the terminal:</p>
+							<p style="text-align: center; color: red;">python3 api.py</p>
+							<figure class="center">
+								<img src="images/server.png" alt="Flask server">
+								<figcaption style="margin-bottom: 5%;">Fig. 1: Terminal Output</figcaption>
+							</figure>
+							<p style="margin-top: 4%;"><b>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann. What happens when this command is run, and why?</b></p>
+							<p>When running this command, the user Ann is retrieved and her data returned by the server.</p>
+							<pre>
+{
+	"name": "Ann",
+	"age": 32,
+	"occupation": "Doctor"
+}								
+							</pre>
+							<p style="margin-top: 4%;"><b>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Adam What happens when this command is run, and why?</b></p>
+							<p>Since Adam is not hard-coded on the users list, the user could not find his data, so the get function returned a 404 server code and “user not found” message.</p>
+							<p style="margin-top: 4%;"><b>What capability is achieved by the flask library?</b></p>
+							<p>The flask library allows the client to perform the CRUD operations on the users dataset, and receive responses based on the type of request that was sent.</p>
+							<p style="margin-top: 4%;"><b>Architecture Evolution Activity. Based on your reading this week, could you write a section that might be appended to this paper, Salah et al, 2016, which would present the next phase of evolution history, from microservices to the technologies which are commonly in use today?</b></p>
+							<p>Following on the latest trends, where monolithic and centralized services are losing its capability to cope with the swarming volumes of data interchanged by an ever-increasing number of powerful computing devices. According to Winkfield, Hu and Hoppa (2018) microservice oriented architectures improve the efficiency of the Software Development Lifecycle (SDLC) and waterfall models have been replaced by modern agile DevOps. This is because nowadays elastic scaling is key and handling many software releases annually (usually more than 100) has made this possible. Alongside this, the developer has adopted a more integral role, with security integrated in the SDLC.</p>
+							<p>To respond to the mentioned challenges that have arisen with the microservices architectures like a very high upfront cost to deploy the required hardware as well as maintainability and right amount of resources to meet the application’s demands. Cloud providers usually have security measures implemented on the architectural model, easing off on the load of the developer and are more scalable and maintainable. These services charge for the amount of hardware used, maximizing the efficiency.</p>
+						</div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Winkfield, L., Hu, Y.-H. and Hoppa, M.A. (2018). A Study of the Evolution of Secure Software Development Architectures. Journal of The Colloquium for Information System Security Education (CISSE), [online] 6(1). Available at: https://cisse.info/journal/index.php/cisse/article/view/86/CISSE_v06_i01_p01.pdf [Accessed 31 May 2024].</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>
