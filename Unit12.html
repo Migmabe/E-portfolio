@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+			.center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+				width: 100%;
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			section p{
+				margin-bottom: 1.5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<header id="header" style="margin-bottom: 0%;">
+			<div class="inner">
+
+				<!-- Nav -->
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</header>
+		<nav id="menu">
+			<h2>Unit selector</h2>
+			<ul>
+				<li><a href="Unit1.html">Unit 1</a></li>
+				<li><a href="Unit2.html">Unit 2</a></li>
+				<li><a href="Unit3.html">Unit 3</a></li>
+				<li><a href="Unit4.html">Unit 4</a></li>
+				<li><a href="Unit5.html">Unit 5</a></li>
+				<li><a href="Unit6.html">Unit 6</a></li>
+				<li><a href="Unit7.html">Unit 7</a></li>
+				<li><a href="Unit8.html">Unit 8</a></li>
+				<li><a href="Unit9.html">Unit 9</a></li>
+				<li><a href="Unit10.html">Unit 10</a></li>
+				<li><a href="Unit11.html">Unit 11</a></li>
+				<li><a href="Unit12.html">Unit 12</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper" style="margin-top: 0%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 12</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>The Great Tanenbaum-Torvalds Debate Revisited</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+						<p>Hopefully the submission went fine, I tested the system against brute force and it successfully averted it. There were some bugs on the final app I was not very happy about, but I literally did not have time to sort these out. I learned a lot, a lot of debugging was required and learnt how to exploit PyCharm’s debugging tools, which are quite powerful. The program runs in the terminal, and I feel quite accomplished this works, it feels like a real terminal program like the one’s found in homebrew.</p>
+						<p>The system demonstration went pretty well, though I have some aspects to improve like debugging and presentation, as I did not plan it very thoroughly. Despite that, I feel accomplished and motivated to finish the e-portfolio, on what will be the last deliverable of my studies here.</p>
+						<p>This is the last module of my studies at the University of Essex Online, and as for main takeaways I can say that the people I worked with were very hard working and lecturer on this last module very proactive. I learned how to plan my schedule and fit this module around it. Out of the other modules that I took up, this one was by far the most demanding.</p>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">System evaluation</button>
+						<div style="width: 100%" id="dropdown1" class="dropdown-content">
+							<p><b>These are the main differences between the system that the team designed and the actual system that I developed</b></p>
+							<p>The system that I ended up presenting was pretty similar to what the team defined in the System Design document. The CRUD operations were allowed and the system had capability to check for oxygen levels, and cabin temperature and pressure. The user also had the chance to modify their own data, which fulfilled the GDPR requirement. Passwords were stored in hashed format using hashlib with a small twist, salting. Ultimately, the security ON and OFF setting was kept as a major requirement. I modified a few things adding a GUI login window, which actively checked password input and the capability to register new users. 
+								In terms of users using the system, I created two types of user credentials with different restrictions when interacting with the system, these were “user” with the least privileges and “admin”. As for data storage, aside from using lists, tuples and dictionaries, I wanted to implement a relational database for complex quering with the benfit of it being a lot more scalable.</p>
+						</div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown2')">Seminar Activity: Microservices and Microkernels Debate</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+							<p>Since there was no open discussion in the forum for this topic, I will present the discussion myself and come to a conclusion. As already mentioned on the previous' unit activity, there are major advantages to using microkernels, and industry trends align to this.</p>
+							<p>Biggs, Lee and Heiser (2018), conclude that microkernel-based systems reduce dramatically the severity of the attacks proving that software structure plays a major role in system security. The percentage of prevented vulnerabilities they found for merely the microkernel architecture is 29%</p>
+							<p>This study further builds on the fact that microkernels give a much better performance in different fields nowadays, and security being one of them make this architecture even more appealing.</p>
+						</div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Biggs, S., Lee, D. and Heiser, G. (2018). The Jury Is In: Monolithic OS Design Is Flawed: Microkernel-based Designs Improve Security. Proceedings of the 9th Asia-Pacific Workshop on Systems. [online] Available at: https://api.semanticscholar.org/CorpusID:52000426 [Accessed 4 Jun. 2024].</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>
