@@ -135,31 +135,60 @@
 					<hr>
 					<section>
 						<h3 class="override">Unit activities</h3>
-                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Seminar Activity: Cryptography Programming Exercise</button>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Faceted data</button>
 						<div style="width: 100%" id="dropdown1" class="dropdown-content">
-							<p style="margin-top: 4%;"><b>Run the API.py code. Take a screenshot of the terminal output. What command did you use to compile and run the code?</b></p>
-							<p>I am using a Python 3 build on a MacOS system. To run this file on the terminal, I had to cd my way to the current directory, and then name my file. I named it api.py. This is the command I used to run the Flask server on the terminal:</p>
-							<p style="text-align: center; color: red;">python3 api.py</p>
-							<figure class="center">
-								<img src="images/server.png" alt="Flask server">
-								<figcaption style="margin-bottom: 5%;">Fig. 1: Terminal Output</figcaption>
-							</figure>
-							<p style="margin-top: 4%;"><b>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann. What happens when this command is run, and why?</b></p>
-							<p>When running this command, the user Ann is retrieved and her data returned by the server.</p>
+							<p><b>Do you think this is a good approach to protect systems from data leakage? What are the pros and cons?</b></p>
+							<p>Alneyadi, Sithirasenan and Muthukkumarasamy (2016), define data leakage as an unwanted disclosure of information. I think it goes without saying that data leakage is never a good sign of software robustness. When dealing with any kind of data, if not in a public domain, data must be protected, otherwise made public.</p>
+							<p>They explain that conventional data protection mechanisms can be naïve to an ever-evolving data semantics field and proposed data leakage prevention systems (DLPSs), not to spend that much time defining and mitigating these entry points. Defi Susanti and Kayyis Fithri Ajhuri (2023) take a political approach to define the issues of regulating personal data leakage. These are transparency for conducting investigations or government cover ups, undermining social trust.</p>
+							<p>On an article of the American Business Law Journal by Voss and Houser (2019), they explain how closely linked data leakage and GDPR are. The United States started regulating data disclosure as a human right (“right to be alone”). The article explains how enforcing good data protection practices can potentially pose an advantage for a business if the data is used accordingly. Aside from customer satisfaction and business opportunities, the Guide to the General Data Protection Regulation (2020), also state that data protection will help hold accountability of individuals that use data fraudulently.</p>
+							<p>On the Schmitz et al. (2016) article, they propose a new method to hide data with faceted values. These, change its form and content to hide sensitive data if the viewer credentials do not meet the required permissions. Faceting data is not a new concept, so they proposed a new strategy which ensures more effective protection against leaks.</p>
+							<p style="margin-top: 4%;"><b>Create a basic outline design of how you would create such a system in Python. </b></p>
+							<figure class="center" style="margin-bottom: 4%;">
+                                <img src="images/faceted.png" alt="secure_scrum" style="width: auto;">
+                                <figcaption>Fig. 1: Faceted data simple workflow</figcaption>
+                            </figure>
+							<p>With Python, I thought of implementing a simple Object-Oriented approach to simulate a faceting environment. There will be a superclass called Value, and this one will have a public and private attribute. Then, a subclass will inherit these and implement other security capabilities like encryption on these raw formats. With a getter method, we can check if the request fulfills the permissions required to access the private facet, if not the public, generic version will be returned.</p>
 							<pre>
-{
-	"name": "Ann",
-	"age": 32,
-	"occupation": "Doctor"
-}								
+								<code>
+"""This file will present a simple faceted architecture in a system. As mentioned, encryption will take place at
+subclass level, and there will be a superclass with the public and private faceted values"""
+
+
+class Value:
+
+    def __init__(self, private, public):
+        self.private = private
+        self.public = public
+
+    def encryption(self):
+        # Assume some encryption algorithm here and return the encrypted data, can be private or public
+        return encrypted_value
+
+    def decryption(self, encrypted_value):
+        # Same here, assume a decryption algorithm
+        return decrypted_value
+
+
+class UserRequest:
+
+    def __init__(self, credentials):
+        self.credentials = credentials
+        self.value = Value("actualdata", "clutteredrandom")
+
+    def return_data(self):
+        # Assume data has already been encrypted
+        if self.credentials == "admin":
+            return self.value.decryption(encrypted_value="something")
+        else:
+            return self.value.decryption(self.value.public)
+								</code>
 							</pre>
-							<p style="margin-top: 4%;"><b>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Adam What happens when this command is run, and why?</b></p>
-							<p>Since Adam is not hard-coded on the users list, the user could not find his data, so the get function returned a 404 server code and “user not found” message.</p>
-							<p style="margin-top: 4%;"><b>What capability is achieved by the flask library?</b></p>
-							<p>The flask library allows the client to perform the CRUD operations on the users dataset, and receive responses based on the type of request that was sent.</p>
-							<p style="margin-top: 4%;"><b>Architecture Evolution Activity. Based on your reading this week, could you write a section that might be appended to this paper, Salah et al, 2016, which would present the next phase of evolution history, from microservices to the technologies which are commonly in use today?</b></p>
-							<p>Following on the latest trends, where monolithic and centralized services are losing its capability to cope with the swarming volumes of data interchanged by an ever-increasing number of powerful computing devices. According to Winkfield, Hu and Hoppa (2018) microservice oriented architectures improve the efficiency of the Software Development Lifecycle (SDLC) and waterfall models have been replaced by modern agile DevOps. This is because nowadays elastic scaling is key and handling many software releases annually (usually more than 100) has made this possible. Alongside this, the developer has adopted a more integral role, with security integrated in the SDLC.</p>
-							<p>To respond to the mentioned challenges that have arisen with the microservices architectures like a very high upfront cost to deploy the required hardware as well as maintainability and right amount of resources to meet the application’s demands. Cloud providers usually have security measures implemented on the architectural model, easing off on the load of the developer and are more scalable and maintainable. These services charge for the amount of hardware used, maximizing the efficiency.</p>
+						</div>
+						<button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown2')">Seminar Activity: API Fiore Reflection</button>
+						<div style="width: 100%" id="dropdown2" class="dropdown-content">
+							<p>For the seminar activity, when trying to find the article from S. Fiore et al. (2019), I could not locate the referenced paragraph, but will describe the system that I implemented for the ISS.</p>
+							<p>The system has different capabilities that were implemented with a server client architecture. The server was deployed using flask, and the API functionality was resembled with a script that was designed using the requests module in Python. The API requests had 2 different security levels, with security ON or OFF. When security was active, the server expected the API to send an encrypted key. Otherwise, the request would not be processed. After the request was processed (CRUD operations allowed) responsive feedback will be sent to the API client and returned to the user via the command line interface (CLI).</p>
+							<p>This architecture was rather effective against attacks when the security capability was on, as the designed API was the only gateway the server would understand hence let through.</p>
 						</div>
                     </section>
 				</div>
@@ -167,7 +196,12 @@
 			<footer id="footer" style="padding-top: 3%;" class="footer">
 				<div class="inner">
 					<h3 class="override">References</h3>
-					<p>Winkfield, L., Hu, Y.-H. and Hoppa, M.A. (2018). A Study of the Evolution of Secure Software Development Architectures. Journal of The Colloquium for Information System Security Education (CISSE), [online] 6(1). Available at: https://cisse.info/journal/index.php/cisse/article/view/86/CISSE_v06_i01_p01.pdf [Accessed 31 May 2024].</p>
+					<p>Alneyadi, S., Sithirasenan, E. and Muthukkumarasamy, V. (2016). A survey on data leakage prevention systems. Journal of Network and Computer Applications, 62, pp.137–152. doi:https://doi.org/10.1016/j.jnca.2016.01.008 [Accessed 2 June 2024].</p>
+					<p>Defi Susanti and Kayyis Fithri Ajhuri (2023). Pros and Cons Comparison of Reporting on the Personal Data Protection Law in Tribunnews.com and Antaranews.com. Kalijaga Journal of Communication, 5(2), pp.131–148. doi:https://doi.org/10.14421/kjc.52.03.2023 [Accessed 2 June 2024].</p>
+					<p>Voss, W.G. and Houser, K.A. (2019). Personal Data and the GDPR: Providing a Competitive Advantage for U.S. Companies. American Business Law Journal, [online] 56(2), pp.287–344. doi:https://doi.org/10.1111/ablj.12139 [Accessed 2 June 2024].</p>
+					<p>Guide to the General Data Protection Regulation. (2020). Available at: https://www.twobirds.com/-/media/pdfs/gdpr-pdfs/bird--bird--guide-to-the-general-data-protection-regulation.pdf [Accessed 2 June 2024].</p>
+					<p>Schmitz, T., Rhodes, D., Austin, T.H., Knowles, K. and Flanagan, C. (2016). Faceted Dynamic Information Flow via Control and Data Monads. U. C. Santa Cruz. [online] Available at: http://kennknowles.com/research/schmitz-rhodes-austin-knowles-flanagan.post.16.faceted.pdf [Accessed 2 Jun. 2024].</p>
+					<p>Sampath Kumar, V.R., Khamis, A., Fiorini, S., Carbonera, J.L., Olivares Alarcos, A., Habib, M., Goncalves, P., Li, H. and Olszewska, J.I. (2019). Ontologies for Industry 4.0. The Knowledge Engineering Review, 34. doi:https://doi.org/10.1017/s0269888919000109 [Accessed 2 Jun. 2024].</p>
 				</div>
 			</footer>
 		</div>
