@@ -113,7 +113,7 @@
 					<table class="table-custom">
 						<tr>
 							<td>
-								<h1>Unit 9</h1>
+								<h1>Unit 10</h1>
 							</td>
 							<td style="text-align: right;">
 								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
@@ -121,15 +121,16 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<h2>Developing an API for a Distributed Environment</h2>
+								<h2>From Distributed Computing to Microarchitectures</h2>
 							</td>
 						</tr>
 					</table>
 					<section>
 						<h3 class="override">Short reflection</h3>
-						<p>Great progress was done on the system implementation, the server main structure was finished, still to implement the security ON and OFF feature. The database architecture that I selected is the object relational mapping (ORM) with sqlalchemy. I chose this one as the queries are parametrized, so injection will be avoided. There are a few bits that I am still to figure out, like filtering the API requests out with keys in the header and implement the system logons. The user interface in the CLI is not done, but I would like to have the working backend ready and then connect it to the frontend.</p>
-						<p>I wrote a few peer responses on this unit’s discussion about Truecrypt’s security, my classmates also concluded that this service is no longer a safe option. Other options were laid out, like VeraCrypt or Bitlocker, so will need to expand on these and check if they are actually safer.</p>
-						<p>Last week was pretty intense, and I felt down many times. I was slightly overwhelmed by all the coding that had to be done, as many of the modules that I wanted to include were not done or even started. Getting done with the server was a pretty big relief, now time to keep pushing. My e-portfolio activities were halted as I could not make time to do both coding the system implementation and the research activities.</p>
+						<p>Things are starting to get more hectic, I am putting long hours into developing the app, the security capabilities were implemented both at server and API level. There will surely be some fine tuning of these, and so far I am finding myself involved into debugging the system and it is quite time consuming. 
+							This is because the security ON capability will not only avoid the system being attacked by the denial of service, injection and brute force but also will implement encrypted communication between the server and the API.</p>
+						<p>I am to figure out how to run the server and the main application (essentially CLI) simultaneously, as the server did not allow further input into the console if running on the main thread. I suppose this will need to be done using the threading module. I also want to implement the registration functionality on the login window. I intend to make a registration button pop up when a new user registration password Azerty00 is detected.</p>
+						<p>My full focus is on delivering this application.</p>
 					</section>
 					<hr>
 					<section>
@@ -166,7 +167,6 @@
 			<footer id="footer" style="padding-top: 3%;" class="footer">
 				<div class="inner">
 					<h3 class="override">References</h3>
-					<p>Salah, T., Jamal Zemerly, M., Chan Yeob Yeun, Al-Qutayri, M. and Al-Hammadi, Y. (2016). The evolution of distributed systems towards microservices architecture. [online] IEEE Xplore. doi:https://doi.org/10.1109/ICITST.2016.7856721 [Accessed 31 May 2024].</p>
 					<p>Winkfield, L., Hu, Y.-H. and Hoppa, M.A. (2018). A Study of the Evolution of Secure Software Development Architectures. Journal of The Colloquium for Information System Security Education (CISSE), [online] 6(1). Available at: https://cisse.info/journal/index.php/cisse/article/view/86/CISSE_v06_i01_p01.pdf [Accessed 31 May 2024].</p>
 				</div>
 			</footer>
