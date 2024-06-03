@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Miguel's template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+		<style>
+			.table-custom tr, td {
+				border: none;
+				background-color: rgb(196, 223, 223);
+				width: 50%
+			}
+
+			.button {
+				width: 25%;
+				background-color: aliceblue;
+			}
+
+			.button img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.override {
+				text-transform: inherit;
+				color: #585858;
+				display: inline-block;
+				border-bottom: 2px solid #585858;
+				margin-bottom: 3%;
+			}
+
+			.dropdown-content {
+			display: none;
+			}
+
+            .dropdown-content p {
+				margin-bottom: 1.5%;
+			}
+
+			.center {
+                text-align: center; /* Center-align the content */
+                margin-top: 3%;
+            }
+
+			.center img {
+                display: block; /* Ensure the image is treated as a block-level element */
+				width: 100%;
+                margin: 0 auto; /* Center the image horizontally */
+            }
+
+            .center figcaption {
+                margin-top: 10px; /* Optional: Add margin between image and caption */
+            }
+
+			ul {
+				padding-left: 5%;
+			}
+
+			ol {
+				padding-left: 5%;
+			}
+
+			section p{
+				margin-bottom: 1.5%;
+			}
+
+			.footer div p {
+				margin-bottom: 1%;
+				width: 100%;
+				word-wrap: break-word;
+			}
+
+		</style>
+    </head>
+	<body class="is-preload">
+		<header id="header" style="margin-bottom: 0%;">
+			<div class="inner">
+
+				<!-- Nav -->
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</header>
+		<nav id="menu">
+			<h2>Unit selector</h2>
+			<ul>
+				<li><a href="Unit1.html">Unit 1</a></li>
+				<li><a href="Unit2.html">Unit 2</a></li>
+				<li><a href="Unit3.html">Unit 3</a></li>
+				<li><a href="Unit4.html">Unit 4</a></li>
+				<li><a href="Unit5.html">Unit 5</a></li>
+				<li><a href="Unit6.html">Unit 6</a></li>
+				<li><a href="Unit7.html">Unit 7</a></li>
+				<li><a href="Unit8.html">Unit 8</a></li>
+				<li><a href="Unit9.html">Unit 9</a></li>
+				<li><a href="Unit10.html">Unit 10</a></li>
+				<li><a href="Unit11.html">Unit 11</a></li>
+				<li><a href="Unit12.html">Unit 12</a></li>
+			</ul>
+		</nav>
+		<div id="wrapper" style="margin-top: 0%">
+			<div id="main" style="padding-bottom: 4%;">
+				<div class="inner">
+					<table class="table-custom">
+						<tr>
+							<td>
+								<h1>Unit 11</h1>
+							</td>
+							<td style="text-align: right;">
+								<button class="button" id="press"><img src="images/backarrow.png" alt=""></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h2>Future trends in Secure Software Development</h2>
+							</td>
+						</tr>
+					</table>
+					<section>
+						<h3 class="override">Short reflection</h3>
+						<p>I thought things were going on track with the development of the app, but unfortunately testing and the writeup are still to be done. I am a bit nervous, I am trying my hardest to manage to deliver on time. The functionalities that I wanted to implement from previous week are in place now, these took me a bit more than expected. Threading was indeed a solution to run the server simultaneously and the register button was successfully implemented.</p>
+						<p>In terms of getting the CLI done, it is almost done, running in an infinite loop playing with break commands.</p>
+						<p>I wanted to refer to the Miro Board we had created for the design document, but unfortunately this was nowhere to be found, I do not know if someone deleted it?!</p>
+						<p>This week is the week, let’s do this!</p>
+					</section>
+					<hr>
+					<section>
+						<h3 class="override">Unit activities</h3>
+                        <button class="button primary" style="width: 100%; margin-bottom: 2%; word-wrap: break-word;" onclick="toggleDropdown('dropdown1')">Team Activity: Microservices and microkernels debate</button>
+						<div style="width: 100%" id="dropdown1" class="dropdown-content">
+							<p>Linus Torvalds of course defends his OS (Linux) while Andrew S. Tanenbaum defends Minix, which is a different OS with these differences to Linux:</p>
+							<ul style="margin-left: 4%;">
+								<li>Very portable runs everywhere, but this came with performance issues</li>
+								<li>Supports multithreading which linux did not at the time</li>
+								<li>Minix was developed with educational purposes and was not free</li>
+								<li>Minix is a microkernel-based architecture </li>
+							</ul>
+							<p>Tony Travis, from the Imperial College added to the dispute, and said that Minix segmented architecture of PC application versions was quite constraining. 
+								David Megginson from University of Toronto also says that the microkernel architecture is the way to go, but Minix needs improvements, and given that Linux is free, more functionalities and corrections should happen more often that these to Minix. This turned out to be true, and it was already mentioned by Peter MacDonald from University of Victoria.</p>
+							<p>The discussion concludes with experts defining Minix as a very powerful teaching tool, but not more than that, while Linux being the preferred solution for daily use. Minix lagged behind in implementations and support, slowly fading away from the picture.</p>
+							<p>Salah et al. (2016) explains that monolithic architectures are to be deployed in a single unit. Even small implementations and updates require the redeployment of the whole unit, despite big parts of it being unchanged. Maintainability is also a difficult solution as some applications are so big that replacing developers and implementing updates get increasingly complex, in some cases, even impossible. 
+								This is why applications are starting to be deployed over more scalable Service Oriented Architectures (SOAs) pay on the go hardware on the cloud solutions. These will require more monitoring and rely on strong network communication, hence these must be ensured and maintained. 
+								Migrating the architecture towards a microservices’ one comes at a huge cost as well. Fritzsch et al. (2019) takes on the challenge to find efficient ways to ensure a safe and smooth migration, for services to be integrated seamlessly. His research concluded that the best approach is “Service Cutter” but comes with the great limitation of finding extensive specifications of the system to adequately couple the units, and this is in many cases not available or easy to find.</p>
+							<p>To wrap up, given all the literature consulted I can conclude that I agree with this statement “Torvalds has been proven wrong and it only took nearly thirty years. Microservices and microkernels are the future.“ This is because users demand far more rich and interactive experiences which are supported by big application packages that demand a lot of resources. With the increasing complexity of applications monolithic architectures simply fall short due to the already mentioned constraints.</p>
+						</div>
+                    </section>
+				</div>
+			</div>
+			<footer id="footer" style="padding-top: 3%;" class="footer">
+				<div class="inner">
+					<h3 class="override">References</h3>
+					<p>Salah, T., Jamal Zemerly, M., Chan Yeob Yeun, Al-Qutayri, M. and Al-Hammadi, Y. (2016). The evolution of distributed systems towards microservices architecture. [online] IEEE Xplore. doi:https://doi.org/10.1109/ICITST.2016.7856721 [Accessed 2 June 2024].</p>
+					<p>Fritzsch, J., Bogner, J., Zimmermann, A. and Wagner, S. (2019). From Monolith to Microservices: A Classification of Refactoring Approaches. Software Engineering Aspects of Continuous Development and New Paradigms of Software Production and Deployment, [online] pp.128–141. doi:https://doi.org/10.1007/978-3-030-06019-0_10 [Accessed 2 June 2024].</p>
+					<p>‌DiBona C., Ockman S. (1999). Open Sources: Voices from the Open Source Revolution. [online] Available at: https://www.oreilly.com/openbook/opensources/book/appa.html [Accessed 2 June 2024].</p>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const button = document.getElementById("press");
+			// Add event listener to the button
+			button.addEventListener("click", function() {
+				// Navigate to the desired HTML page when the button is clicked
+				window.location.href = "secure_soft.html";
+			});
+		</script>
+        <script>
+            // Function to toggle the dropdown content
+            function toggleDropdown(dropdownId) {
+              var dropdownContent = document.getElementById(dropdownId);
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+            }
+        </script>
+	</body>
+</html>
